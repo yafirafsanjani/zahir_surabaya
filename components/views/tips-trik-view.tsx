@@ -17,7 +17,7 @@ export function TipsTrikView() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100">
+    <div className="min-h-screen text-zinc-100">
       {/* Hero Tips & Trik */}
       <HeroBanner
         compact
@@ -27,7 +27,7 @@ export function TipsTrikView() {
       />
 
       {/* Kartu Artikel Tips */}
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <section className="bg-background"><div className="mx-auto max-w-6xl px-6 py-18 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid gap-5 md:grid-cols-3">
           {cards.map((card, idx) => (
             <article
@@ -42,7 +42,7 @@ export function TipsTrikView() {
             </article>
           ))}
         </div>
-      </section>
+      </div></section>
     </div>
   );
 }

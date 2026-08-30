@@ -14,7 +14,7 @@ export function SupportDetailView({ support }: SupportDetailViewProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100">
+    <div className="min-h-screen text-zinc-100">
       {/* Hero Detail Versi Support */}
       <HeroBanner
         compact
@@ -26,7 +26,7 @@ export function SupportDetailView({ support }: SupportDetailViewProps) {
       />
 
       {/* Grid Panduan & Eskalasi */}
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <section className="bg-background"><div className="mx-auto max-w-6xl px-6 py-18 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid gap-5 md:grid-cols-3">
           {sections.map((sec, idx) => (
             <article className="rounded-2xl border border-white/10 bg-[#12131a] p-6" key={sec.title}>
@@ -39,10 +39,10 @@ export function SupportDetailView({ support }: SupportDetailViewProps) {
 
         <div className="mt-10 border-t border-white/10 pt-6">
           <Link className="text-xs font-semibold text-emerald-400 hover:text-emerald-300" href="/contact-us">
-            Butuh asistensi langsung di tempat kerja? Hubungi kami →
+            Butuh asistensi langsung di tempat kerja? Hubungi kami ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢
           </Link>
         </div>
-      </section>
+      </div></section>
     </div>
   );
 }

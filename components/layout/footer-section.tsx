@@ -4,7 +4,7 @@ import { BrandLogo } from "@/components/layout/brand-logo";
 
 export function FooterSection() {
   return (
-    <footer className="border-t border-white/[0.07] bg-[#090a0f] text-zinc-400">
+    <footer className="border-t border-white/[0.07] bg-grid-pattern text-zinc-400">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_1.8fr] lg:px-8">
         {/* Kolom Informasi Brand Footer */}
         <div>

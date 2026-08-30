@@ -1,30 +1,35 @@
-import { HeroInteractive } from "@/components/home/hero-interactive";
-import { MetricsBanner } from "@/components/home/metrics-banner";
-import { IndustryMarquee } from "@/components/home/industry-marquee";
-import { ProductInteractiveGrid } from "@/components/home/product-interactive-grid";
-import { FeaturesWorkflow } from "@/components/home/features-workflow";
-import { SupportAndHubCta } from "@/components/home/support-cta";
+import { CompanyProfileHeroSection } from "@/components/home/company-profile-hero-section";
+import { CompanyOverviewSection } from "@/components/home/company-overview-section";
+import { CompanyHistoryTimelineSection } from "@/components/home/company-history-timeline-section";
+import { CompanyProductPortfolioSection } from "@/components/home/company-product-portfolio-section";
+import { CompanySurabayaServiceSection } from "@/components/home/company-surabaya-service-section";
+import { CompanyProfileCallToActionSection } from "@/components/home/company-profile-call-to-action-section";
 
+/**
+ * Komposisi utama Beranda.
+ * Fokus halaman: company profile Zahir, sejarah, portofolio produk,
+ * peran Zahir Surabaya, dan ajakan konsultasi.
+ */
 export function HomePageView() {
   return (
-    <div className="relative min-h-screen bg-[#090a0f] text-zinc-100 bg-grid-pattern">
-      {/* 1. Bagian Hero Beranda Interaktif */}
-      <HeroInteractive />
+    <div className="min-h-screen text-zinc-100">
+      {/* 1. Hero Company Profile Zahir */}
+      <CompanyProfileHeroSection />
 
-      {/* 2. Bagian Banner Metrik & Kredibilitas */}
-      <MetricsBanner />
+      {/* 2. Penjelasan: Apa itu Zahir dan peran Zahir Surabaya */}
+      <CompanyOverviewSection />
 
-      {/* 3. Bagian Marquee Ticker Industri */}
-      <IndustryMarquee />
+      {/* 3. Kronologi Sejarah Zahir */}
+      <CompanyHistoryTimelineSection />
 
-      {/* 4. Bagian Katalog Produk Interaktif */}
-      <ProductInteractiveGrid />
+      {/* 4. Portofolio Produk Zahir */}
+      <CompanyProductPortfolioSection />
 
-      {/* 5. Bagian Alur Kerja Terintegrasi */}
-      <FeaturesWorkflow />
+      {/* 5. Layanan dan arah konsultasi Zahir Surabaya */}
+      <CompanySurabayaServiceSection />
 
-      {/* 6. Bagian Dukungan & Aksi Konsultasi Hub */}
-      <SupportAndHubCta />
+      {/* 6. Call to Action Beranda */}
+      <CompanyProfileCallToActionSection />
     </div>
   );
 }

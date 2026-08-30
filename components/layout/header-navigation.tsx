@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { publicNavigation } from "@/data/site";
 import { BrandLogo } from "@/components/layout/brand-logo";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 export function HeaderNavigation() {
   return (
@@ -45,12 +46,13 @@ export function HeaderNavigation() {
 
         {/* Tombol CTA Bagian Kanan */}
         <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <Link 
             className="relative inline-flex items-center justify-center overflow-hidden rounded-full p-[1px] text-xs font-medium text-white transition focus:outline-none"
             href="/contact-us"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-400 opacity-80" />
-            <span className="relative flex items-center gap-1.5 rounded-full bg-[#090a0f] px-4 py-1.5 text-xs font-medium text-emerald-400 transition hover:bg-transparent hover:text-white">
+            <span className="relative flex items-center gap-1.5 rounded-full bg-surface px-4 py-1.5 text-xs font-medium text-primary transition hover:bg-transparent hover:text-on-primary">
               Konsultasi
               <span aria-hidden="true">→</span>
             </span>
@@ -58,7 +60,9 @@ export function HeaderNavigation() {
         </div>
 
         {/* Menu Navigasi Mobile */}
-        <details className="relative lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <details className="relative">
           <summary aria-label="Buka navigasi" className="flex cursor-pointer list-none items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 text-xs font-medium text-zinc-300">
             <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
@@ -87,7 +91,8 @@ export function HeaderNavigation() {
               </Link>
             </div>
           </nav>
-        </details>
+          </details>
+        </div>
       </div>
     </header>
   );

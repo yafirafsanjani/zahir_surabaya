@@ -8,11 +8,11 @@ type ProductDetailViewProps = {
 
 export function ProductDetailView({ product }: ProductDetailViewProps) {
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100">
+    <div className="min-h-screen text-zinc-100">
       {/* Hero Detail Produk Spesifik */}
       <HeroBanner
         compact
-        eyebrow={"Katalog • " + product.audience}
+        eyebrow={"Katalog ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ " + product.audience}
         title={product.name}
         description={product.description}
         primaryAction={{ href: "/contact-us", label: "Konsultasikan Varian Ini" }}
@@ -20,7 +20,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
       />
 
       {/* Konten Rincian Fitur & Pendampingan Surabaya */}
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <section className="bg-background"><div className="mx-auto max-w-6xl px-6 py-18 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="rounded-3xl border border-white/10 bg-[#12131a] p-8 sm:p-10">
             <span className="text-xs font-semibold tracking-widest text-emerald-400 uppercase">
@@ -33,7 +33,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
               {product.benefits.map((benefit) => (
                 <li className="flex items-start gap-3.5 text-xs text-zinc-300 sm:text-sm" key={benefit}>
                   <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-400">
-                    ✓
+                    ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“
                   </span>
                   <span>{benefit}</span>
                 </li>
@@ -61,7 +61,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
             </Link>
           </div>
         </div>
-      </section>
+      </div></section>
     </div>
   );
 }

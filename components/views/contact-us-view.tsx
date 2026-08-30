@@ -2,7 +2,7 @@ import { HeroBanner } from "@/components/sections/hero-banner";
 
 export function ContactUsView() {
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100">
+    <div className="min-h-screen text-zinc-100">
       {/* Hero Kontak & Konsultasi */}
       <HeroBanner
         compact
@@ -12,7 +12,7 @@ export function ContactUsView() {
       />
 
       {/* Detail Informasi Kontak & Checklist Persiapan */}
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <section className="bg-background"><div className="mx-auto max-w-6xl px-6 py-18 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-3xl border border-white/10 bg-[#12131a] p-8 sm:p-10">
             <span className="text-xs font-semibold tracking-widest text-emerald-400 uppercase">
@@ -68,7 +68,7 @@ export function ContactUsView() {
             </div>
           </div>
         </div>
-      </section>
+      </div></section>
     </div>
   );
 }

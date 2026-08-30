@@ -8,10 +8,22 @@ export const metadata: Metadata = {
   description: "Pusat layanan resmi Zahir Accounting di Surabaya. Konsultasi produk, pelatihan, dan dukungan teknis sistem manajemen bisnis.",
 };
 
+const themeInitializer = `
+  try {
+    const savedTheme = localStorage.getItem("zahir-theme");
+    document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+  } catch {
+    document.documentElement.dataset.theme = "light";
+  }
+`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="id">
-      <body className="bg-[#090a0f] text-zinc-100 antialiased selection:bg-emerald-500 selection:text-zinc-950">
+    <html lang="id" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitializer }} />
+      </head>
+      <body className="bg-background text-foreground antialiased selection:bg-primary selection:text-on-primary">
         {/* 1. Komponen Header & Navigasi Atas */}
         <HeaderNavigation />
 

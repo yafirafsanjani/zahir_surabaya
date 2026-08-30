@@ -3,7 +3,7 @@ import { HeroBanner } from "@/components/sections/hero-banner";
 
 export function ProductCatalogView() {
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100">
+    <div className="min-h-screen text-zinc-100">
       {/* Hero Katalog Produk */}
       <HeroBanner
         compact

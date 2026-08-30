@@ -4,7 +4,7 @@ import { supportVersions } from "@/data/site";
 
 export function SupportCentreView() {
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100">
+    <div className="min-h-screen text-zinc-100">
       {/* Hero Support Centre */}
       <HeroBanner
         compact
@@ -14,7 +14,7 @@ export function SupportCentreView() {
       />
 
       {/* Pilihan Versi Support */}
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <section className="bg-background"><div className="mx-auto max-w-6xl px-6 py-18 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid gap-6 md:grid-cols-2">
           {supportVersions.map((support, index) => (
             <article
@@ -31,12 +31,12 @@ export function SupportCentreView() {
                 href={`/support-centre/${support.slug}`}
                 className="mt-8 inline-flex items-center gap-2 font-semibold text-emerald-400 hover:text-emerald-300 text-xs"
               >
-                Buka Pusat Dukungan Ini <span>→</span>
+                Buka Pusat Dukungan Ini <span>ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</span>
               </Link>
             </article>
           ))}
         </div>
-      </section>
+      </div></section>
     </div>
   );
 }
