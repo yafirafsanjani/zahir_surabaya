@@ -1,87 +1,105 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #fffdf9;
-  --foreground: #281315;
-  --body: #49262a;
-  --muted: #6f4044;
-  --muted-strong: #86585a;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --body: #334155;
+  --muted: #64748b;
+  --muted-foreground: #64748b;
   --surface: #ffffff;
-  --surface-raised: #fff8f3;
-  --surface-muted: #f8efe9;
-  --border: #ead9d0;
-  --border-strong: #d9c0b5;
-  --primary: #d93f35;
-  --primary-strong: #b92e28;
-  --primary-soft: #f1ddd2;
-  --primary-text: #a82721;
-  --primary-deep: #651716;
+  --surface-raised: #f8fafc;
+  --surface-muted: #f1f5f9;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  
+  /* Zahir Official Brand Colors (Blue & Slate Palette) */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-soft: #eff6ff;
+  --primary-text: #1d4ed8;
+  --primary-border: #bfdbfe;
+  --primary-deep: #1e3a8a;
   --on-primary: #ffffff;
-  --grid-line: rgba(217, 63, 53, 0.08);
-  --dot: rgba(217, 63, 53, 0.15);
-  --glow: rgba(217, 63, 53, 0.12);
-  --glass: rgba(255, 255, 255, 0.92);
-  --glass-hover: #fff8f3;
-  --scroll-track: #f8efe9;
-  --scroll-thumb: #d4aba0;
-  --scroll-thumb-hover: #b97b70;
+  
+  --badge-bg: #eff6ff;
+  --badge-text: #1d4ed8;
+  --badge-border: #dbeafe;
+
+  --grid-line: rgba(37, 99, 235, 0.05);
+  --dot: rgba(37, 99, 235, 0.08);
+  --glow: rgba(37, 99, 235, 0.06);
+  --glass: rgba(255, 255, 255, 0.85);
+  --glass-hover: rgba(255, 255, 255, 0.95);
+  --scroll-track: #f1f5f9;
+  --scroll-thumb: #cbd5e1;
+  --scroll-thumb-hover: #94a3b8;
 }
 
-html[data-theme="dark"] {
-  --background: #150f0f;
-  --foreground: #fff9f5;
-  --body: #f1ded7;
-  --muted: #d8c0b9;
-  --muted-strong: #bfa59e;
-  --surface: #241918;
-  --surface-raised: #322321;
-  --surface-muted: #1d1413;
-  --border: #513936;
-  --border-strong: #704b47;
-  --primary: #f05b50;
-  --primary-strong: #d9423a;
-  --primary-soft: #f3c8ba;
-  --primary-text: #f6c5b8;
-  --primary-deep: #591714;
-  --on-primary: #fffaf7;
-  --grid-line: rgba(255, 255, 255, 0.04);
-  --dot: rgba(255, 255, 255, 0.08);
-  --glow: rgba(240, 91, 80, 0.14);
-  --glass: rgba(36, 23, 24, 0.76);
-  --glass-hover: rgba(48, 32, 33, 0.88);
-  --scroll-track: #1d1314;
-  --scroll-thumb: #513638;
-  --scroll-thumb-hover: #70484c;
+html[data-theme="dark"],
+.dark {
+  --background: #090d16;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --body: #cbd5e1;
+  --muted: #94a3b8;
+  --muted-foreground: #94a3b8;
+  --surface: #0f172a;
+  --surface-raised: #1e293b;
+  --surface-muted: #131d33;
+  --border: #1e293b;
+  --border-strong: #334155;
+  
+  /* Dark Mode Zahir Colors */
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-soft: rgba(37, 99, 235, 0.16);
+  --primary-text: #93c5fd;
+  --primary-border: rgba(59, 130, 246, 0.3);
+  --primary-deep: #172554;
+  --on-primary: #ffffff;
+  
+  --badge-bg: rgba(37, 99, 235, 0.15);
+  --badge-text: #93c5fd;
+  --badge-border: rgba(59, 130, 246, 0.25);
+
+  --grid-line: rgba(59, 130, 246, 0.05);
+  --dot: rgba(59, 130, 246, 0.10);
+  --glow: rgba(59, 130, 246, 0.12);
+  --glass: rgba(15, 23, 42, 0.85);
+  --glass-hover: rgba(30, 41, 59, 0.90);
+  --scroll-track: #090d16;
+  --scroll-thumb: #1e293b;
+  --scroll-thumb-hover: #334155;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-page: var(--background);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
   --color-surface-muted: var(--surface-muted);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-primary: var(--primary);
-  --color-primary-strong: var(--primary-strong);
+  --color-primary-hover: var(--primary-hover);
   --color-primary-soft: var(--primary-soft);
+  --color-primary-text: var(--primary-text);
+  --color-primary-border: var(--primary-border);
   --color-primary-deep: var(--primary-deep);
   --color-on-primary: var(--on-primary);
-  --color-zinc-100: var(--foreground);
-  --color-zinc-200: var(--foreground);
-  --color-zinc-300: var(--body);
-  --color-zinc-400: var(--muted);
-  --color-zinc-500: var(--muted-strong);
-  --color-zinc-600: var(--muted-strong);
-  --color-zinc-950: var(--on-primary);
-  --color-emerald-300: var(--primary-text);
-  --color-emerald-400: var(--primary);
-  --color-emerald-500: var(--primary-strong);
-  --color-emerald-600: var(--primary-strong);
-  --color-emerald-950: var(--primary-deep);
-  --color-teal-300: var(--primary-text);
-  --color-teal-400: var(--primary);
-  --color-teal-500: var(--primary-strong);
+  --color-badge-bg: var(--badge-bg);
+  --color-badge-text: var(--badge-text);
+  --color-badge-border: var(--badge-border);
 }
 
 * {
@@ -93,7 +111,8 @@ html {
   color-scheme: light;
 }
 
-html[data-theme="dark"] {
+html[data-theme="dark"],
+html.dark {
   color-scheme: dark;
 }
 
@@ -106,7 +125,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  transition: background-color 180ms ease, color 180ms ease;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 
 ::selection {
@@ -114,51 +133,8 @@ body {
   color: var(--on-primary);
 }
 
-/* Existing surface utilities map to the active palette across every route. */
-.bg-\[\#090a0f\] { background-color: var(--background); }
-.bg-\[\#090a0f\]\/80 { background-color: color-mix(in srgb, var(--background) 80%, transparent); }
-.bg-\[\#12131a\] { background-color: var(--surface); }
-.bg-\[\#12131a\]\/60 { background-color: color-mix(in srgb, var(--surface) 60%, transparent); }
-.bg-\[\#12131a\]\/80 { background-color: color-mix(in srgb, var(--surface) 80%, transparent); }
-.bg-\[\#12131a\]\/95 { background-color: color-mix(in srgb, var(--surface) 95%, transparent); }
-.bg-\[\#181924\], .bg-\[\#161824\] { background-color: var(--surface-raised); }
-.bg-\[\#151620\], .bg-\[\#0c0d14\] { background-color: var(--surface-muted); }
-.bg-\[\#0c0d14\]\/70 { background-color: color-mix(in srgb, var(--surface-muted) 70%, transparent); }
-.bg-\[\#101118\]\/80 { background-color: color-mix(in srgb, var(--surface) 80%, transparent); }
-.from-\[\#090a0f\] {
-  --tw-gradient-from: var(--background) var(--tw-gradient-from-position);
-  --tw-gradient-to: color-mix(in srgb, var(--background) 0%, transparent) var(--tw-gradient-to-position);
-}
-.from-\[\#12131a\] {
-  --tw-gradient-from: var(--surface) var(--tw-gradient-from-position);
-  --tw-gradient-to: color-mix(in srgb, var(--surface) 0%, transparent) var(--tw-gradient-to-position);
-}
-.to-\[\#181924\] { --tw-gradient-to: var(--surface-raised) var(--tw-gradient-to-position); }
-
-:root:not([data-theme="dark"]) .text-white { color: var(--foreground); }
-:root:not([data-theme="dark"]) .hover\:text-white:hover { color: var(--foreground); }
-:root:not([data-theme="dark"]) .border-white\/5,
-:root:not([data-theme="dark"]) .border-white\/10,
-:root:not([data-theme="dark"]) .border-white\/15,
-:root:not([data-theme="dark"]) .border-white\/\[0\.04\],
-:root:not([data-theme="dark"]) .border-white\/\[0\.05\],
-:root:not([data-theme="dark"]) .border-white\/\[0\.06\],
-:root:not([data-theme="dark"]) .border-white\/\[0\.07\] { border-color: var(--border); }
-:root:not([data-theme="dark"]) .hover\:border-white\/15:hover,
-:root:not([data-theme="dark"]) .hover\:border-white\/30:hover { border-color: var(--border-strong); }
-:root:not([data-theme="dark"]) .bg-white\/5,
-:root:not([data-theme="dark"]) .bg-white\/\[0\.02\],
-:root:not([data-theme="dark"]) .bg-white\/\[0\.04\] { background-color: var(--surface-muted); }
-:root:not([data-theme="dark"]) .hover\:bg-white\/5:hover,
-:root:not([data-theme="dark"]) .hover\:bg-white\/10:hover,
-:root:not([data-theme="dark"]) .hover\:bg-white\/\[0\.06\]:hover,
-:root:not([data-theme="dark"]) .hover\:bg-white\/\[0\.08\]:hover { background-color: var(--surface-raised); }
-:root:not([data-theme="dark"]) .bg-black\/30,
-:root:not([data-theme="dark"]) .bg-black\/40 { background-color: color-mix(in srgb, var(--primary-deep) 9%, var(--surface)); }
-
 /* Subtle grid background */
 .bg-grid-pattern {
-  background-color: var(--background);
   background-size: 40px 40px;
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
@@ -175,8 +151,8 @@ body {
   background: radial-gradient(circle at 50% 0%, var(--glow) 0%, color-mix(in srgb, var(--glow) 12%, transparent) 50%, transparent 80%);
 }
 
-.radial-glow-indigo {
-  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--primary) 10%, transparent) 0%, transparent 70%);
+.radial-glow-blue {
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--primary) 12%, transparent) 0%, transparent 70%);
 }
 
 /* Glassmorphism */
@@ -195,7 +171,7 @@ body {
   background: var(--glass-hover);
   border-color: var(--border-strong);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(57, 12, 16, 0.18), 0 0 20px -5px var(--glow);
+  box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.10), 0 0 20px -5px var(--glow);
 }
 
 /* Animations */
@@ -241,12 +217,6 @@ body {
   animation-play-state: paused;
 }
 
-.shimmer-badge {
-  background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.03) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 4s infinite;
-}
-
 /* Custom modern scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -261,3 +231,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--scroll-thumb-hover);
 }
+

@@ -29,60 +29,66 @@ export function ProductInteractiveGrid() {
   });
 
   return (
-    <section className="border-b border-white/[0.07] bg-background pt-16 pb-32 sm:pt-20 sm:pb-40 lg:pt-24 lg:pb-48">
+    <section className="border-b border-border bg-background pt-14 pb-24 sm:pt-18 sm:pb-32 lg:pt-20 lg:pb-36 transition-colors duration-200">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        {/* Section Title & Filter Tabs */}
+        {/* Header Section: Harga Paket Produk Zahir Accounting 6 */}
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[11px] font-semibold text-emerald-400">
-              Katalog Lengkap Zahir
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold text-primary">
+              <span className="size-1.5 rounded-full bg-primary animate-pulse" />
+              Katalog Lengkap &amp; Harga Resmi
             </div>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Solusi yang Disesuaikan dengan Skala Anda
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              Harga
             </h2>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-400">
-              Pilih varian Zahir sesuai kebutuhan spesifik industri dan alur kerja perusahaan.
+            <p className="mt-2 text-base font-semibold text-foreground/90 sm:text-lg">
+              Berikut daftar harga paket produk Zahir Accounting 6
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-muted sm:text-sm">
+              (Harga sudah termasuk{" "}
+              <span className="font-semibold text-foreground/80">Training &amp; Support by Phone</span>.{" "}
+              <span className="font-semibold text-foreground/80">Belum termasuk PPN 10%</span>)
             </p>
           </div>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap gap-1.5 rounded-xl border border-white/10 bg-[#12131a] p-1.5 backdrop-blur-md">
+          <div className="flex flex-wrap gap-1 rounded-2xl border border-border bg-surface-muted p-1.5 shadow-xs backdrop-blur-md">
             <button
               onClick={() => setFilter("all")}
-              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
+              className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-200 ${
                 filter === "all"
-                  ? "bg-emerald-500 text-zinc-950 shadow-sm font-bold"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-primary text-white shadow-xs font-bold"
+                  : "text-muted hover:text-foreground hover:bg-surface"
               }`}
             >
               Semua (7)
             </button>
             <button
               onClick={() => setFilter("ukm")}
-              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
+              className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-200 ${
                 filter === "ukm"
-                  ? "bg-emerald-500 text-zinc-950 shadow-sm font-bold"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-primary text-white shadow-xs font-bold"
+                  : "text-muted hover:text-foreground hover:bg-surface"
               }`}
             >
-              UKM & Dagang
+              UKM &amp; Dagang
             </button>
             <button
               onClick={() => setFilter("enterprise")}
-              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
+              className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-200 ${
                 filter === "enterprise"
-                  ? "bg-emerald-500 text-zinc-950 shadow-sm font-bold"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-primary text-white shadow-xs font-bold"
+                  : "text-muted hover:text-foreground hover:bg-surface"
               }`}
             >
               Enterprise
             </button>
             <button
               onClick={() => setFilter("online")}
-              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
+              className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-200 ${
                 filter === "online"
-                  ? "bg-emerald-500 text-zinc-950 shadow-sm font-bold"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-primary text-white shadow-xs font-bold"
+                  : "text-muted hover:text-foreground hover:bg-surface"
               }`}
             >
               Cloud / Online
@@ -90,59 +96,82 @@ export function ProductInteractiveGrid() {
           </div>
         </div>
 
-        {/* Grid of Products with Modern Cards */}
+        {/* Grid of Product Pricing Cards */}
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProducts.map((product, idx) => (
-            <Link
+          {filteredProducts.map((product) => (
+            <div
               key={product.slug}
-              href={`/product/${product.slug}`}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#12131a]/80 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald-500/40 hover:bg-[#181924] hover:shadow-xl hover:shadow-emerald-950/20"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/10"
             >
-              {/* Top Badge & Number */}
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="rounded-md border border-primary bg-primary px-2.5 py-1 text-[10px] font-bold text-on-primary shadow-sm shadow-primary/20">
-                    {product.audience}
-                  </span>
-                  <span className="font-mono text-xs text-zinc-600 group-hover:text-emerald-400">
-                    0{idx + 1}
-                  </span>
-                </div>
+              {/* Card Top: Price Display */}
+              <div className="border-b border-border/80 bg-surface-raised px-6 py-6 text-center transition-colors">
+                <span className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">
+                  {product.price}
+                </span>
+              </div>
 
-                {/* Product Name */}
-                <h3 className="mt-5 text-xl font-bold tracking-tight text-white group-hover:text-emerald-300">
+              {/* Product Title Bar (Zahir Blue accent) */}
+              <div className="bg-primary px-4 py-2.5 text-center">
+                <h3 className="text-sm font-bold tracking-wide text-white">
                   {product.name}
                 </h3>
+              </div>
 
-                {/* Description */}
-                <p className="mt-3 text-xs leading-relaxed text-zinc-400">
-                  {product.description}
-                </p>
+              {/* Card Body */}
+              <div className="flex flex-1 flex-col justify-between p-6 bg-card">
+                <div>
+                  {/* Category / Target Subtitle Box */}
+                  <div className="rounded-xl border border-primary/20 bg-primary/5 dark:bg-primary/10 px-4 py-2.5 text-center transition-colors">
+                    <p className="text-xs font-semibold leading-snug text-primary dark:text-primary-text">
+                      {product.audience}
+                    </p>
+                  </div>
 
-                {/* Feature Highlights */}
-                <div className="mt-6 space-y-2 border-t border-white/[0.06] pt-4">
-                  {product.benefits.map((benefit, i) => (
-                    <div key={i} className="flex items-center gap-2 text-[11px] text-zinc-300">
-                      <span className="size-1 rounded-full bg-emerald-400" />
-                      <span>{benefit}</span>
-                    </div>
-                  ))}
+                  {/* Feature Checklist with Zahir Blue Checkmarks */}
+                  <ul className="mt-6 space-y-3">
+                    {product.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-xs text-body sm:text-[13px] leading-relaxed">
+                        <div className="flex size-4.5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary mt-0.5">
+                          <svg
+                            className="size-3"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={3}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M4.5 12.75l6 6 9-13.5"
+                            />
+                          </svg>
+                        </div>
+                        <span className="text-foreground/90 font-medium">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Bottom Action / Link */}
+                <div className="mt-8 border-t border-border pt-4">
+                  <Link
+                    href={`/product/${product.slug}`}
+                    className="group/btn flex items-center justify-between text-xs font-bold text-primary transition hover:text-primary-hover"
+                  >
+                    <span>Lihat Detail Spesifikasi</span>
+                    <span className="flex size-8 items-center justify-center rounded-full bg-primary/10 text-primary transition-all duration-200 group-hover/btn:bg-primary group-hover/btn:text-white group-hover/btn:translate-x-1">
+                      <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </span>
+                  </Link>
                 </div>
               </div>
-
-              {/* Bottom link callout */}
-              <div className="mt-8 flex items-center justify-between border-t border-white/[0.04] pt-4">
-                <span className="text-xs font-semibold text-emerald-400 group-hover:text-emerald-300">
-                  Detail Spesifikasi
-                </span>
-                <span className="flex size-7 items-center justify-center rounded-full bg-white/5 text-xs text-zinc-300 transition-all group-hover:bg-emerald-500 group-hover:text-zinc-950 group-hover:translate-x-1">
-                  →
-                </span>
-              </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+

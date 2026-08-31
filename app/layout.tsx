@@ -9,26 +9,40 @@ export const metadata: Metadata = {
 };
 
 const themeInitializer = `
-  try {
-    const savedTheme = localStorage.getItem("zahir-theme");
-    document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
-  } catch {
-    document.documentElement.dataset.theme = "light";
-  }
+  (function() {
+    try {
+      var savedTheme = localStorage.getItem("zahir-theme");
+      var isDark = savedTheme === "dark";
+      if (isDark) {
+        document.documentElement.dataset.theme = "dark";
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.dataset.theme = "light";
+        document.documentElement.classList.remove("dark");
+      }
+    } catch (e) {
+      document.documentElement.dataset.theme = "light";
+      document.documentElement.classList.remove("dark");
+    }
+  })();
 `;
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializer }} />
       </head>
-      <body className="bg-background text-foreground antialiased selection:bg-primary selection:text-on-primary">
+      <body className="bg-background text-foreground antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
         {/* 1. Komponen Header & Navigasi Atas */}
         <HeaderNavigation />
 
         {/* 2. Konten Halaman Aktif */}
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
 
         {/* 3. Komponen Footer Bawah */}
         <FooterSection />
@@ -36,3 +50,4 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
+
