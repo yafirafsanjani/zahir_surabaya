@@ -1,53 +1,53 @@
 import Link from "next/link";
 
-const surabayaServices = [
-  "Pendampingan awal untuk memilih paket Zahir Accounting yang tepat",
-  "Informasi alur peningkatan versi (upgrade) serta opsi Zahir Online",
-  "Jalur komunikasi terarah untuk kebutuhan implementasi dan training staf",
-  "Pusat rujukan resmi bagi pelaku usaha di Jawa Timur dan sekitarnya",
+const services = [
+  {
+    title: "Konsultasi Paket & Modul",
+    desc: "Penyesuaian varian software dengan model bisnis, jumlah user, dan kompleksitas operasional.",
+  },
+  {
+    title: "Setup COA & Saldo Awal",
+    desc: "Perancangan struktur bagan akun, master data persediaan, dan format formulir transaksi bisnis.",
+  },
+  {
+    title: "Migrasi & Implementasi",
+    desc: "Pendampingan pemindahan database historis dan konfigurasi multi-user di jaringan lokal kantor.",
+  },
+  {
+    title: "Pelatihan & Dukungan Teknis",
+    desc: "Training operator finance, panduan tutup buku bulanan, dan bantuan teknis responsif.",
+  },
 ];
 
 export function CompanySurabayaServiceSection() {
   return (
-    <section className="border-b border-border bg-background bg-grid-pattern py-16 sm:py-20 transition-colors duration-200">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 sm:p-10 shadow-xs">
-            <div className="pointer-events-none absolute top-0 right-0 size-72 rounded-full bg-primary/10 blur-3xl" />
-            <p className="relative text-xs font-bold tracking-widest text-primary uppercase">Zahir Surabaya</p>
-            <h2 className="relative mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-              Titik temu kebutuhan software akuntansi di Jawa Timur.
+    <section className="bg-background py-16 sm:py-20 border-b border-border/80">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-2xl">
+            <span className="badge-minimal">Pendampingan Ahli</span>
+            <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Implementasi Tepat untuk Hasil Maksimal
             </h2>
-            <p className="relative mt-3 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
-              Sebagai perwakilan resmi, Zahir Surabaya menjembatani pemilik bisnis, konsultan keuangan, dan tim operasional untuk mendapatkan solusi pembukuan yang sesuai dengan konteks dan alur kerja di lapangan.
-            </p>
-            <div className="relative mt-8 flex flex-wrap gap-3">
-              <Link className="rounded-full bg-primary px-6 py-3 text-xs font-bold text-white shadow-xs transition hover:bg-primary-hover hover:shadow-md hover:shadow-primary/20" href="/contact-us">
-                Konsultasi Kebutuhan Anda
-              </Link>
-              <Link className="rounded-full border border-border bg-surface px-6 py-3 text-xs font-semibold text-foreground shadow-xs transition hover:border-primary/40 hover:bg-surface-raised hover:text-primary" href="/support-centre">
-                Pusat Dukungan Teknis
-              </Link>
-            </div>
           </div>
+          <Link className="btn-primary self-start sm:self-auto" href="/contact-us">
+            <span>Diskusikan Kebutuhan</span>
+            <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
+        </div>
 
-          <aside className="rounded-3xl border border-primary/25 bg-primary/5 dark:bg-primary/10 p-8 backdrop-blur-xl sm:p-10 transition-colors">
-            <p className="text-xs font-bold tracking-widest text-primary uppercase">Yang Bisa Dieksplorasi</p>
-            <ul className="mt-6 space-y-4">
-              {surabayaServices.map((item, index) => (
-                <li className="flex items-start gap-3" key={item}>
-                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-xs font-bold text-primary">0{index + 1}</span>
-                  <p className="pt-0.5 text-xs font-medium leading-relaxed text-foreground/80">{item}</p>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 border-t border-border pt-5 text-xs leading-relaxed text-muted">
-              Didukung referensi resmi dan pengalaman implementasi nyata di berbagai sektor usaha.
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {services.map((item, idx) => (
+            <div className="clean-card p-6" key={item.title}>
+              <span className="text-xs font-mono font-bold text-primary">0{idx + 1}</span>
+              <h3 className="mt-3 text-base font-semibold text-foreground">{item.title}</h3>
+              <p className="mt-1.5 text-xs sm:text-sm text-muted leading-relaxed">{item.desc}</p>
             </div>
-          </aside>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-

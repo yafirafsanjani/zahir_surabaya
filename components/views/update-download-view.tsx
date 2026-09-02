@@ -3,44 +3,43 @@ import { HeroBanner } from "@/components/sections/hero-banner";
 export function UpdateDownloadView() {
   const cards = [
     {
-      title: "Patch & Build Terbaru",
-      description: "Catatan rilis peningkatan performa dan penyesuaian regulasi perpajakan atau laporan.",
+      title: "Patch & Build Pembaruan Terkini",
+      description: "Catatan rilis peningkatan performa, optimasi database, dan penyesuaian regulasi perpajakan Indonesia terbaru.",
+      tag: "Patch Update",
     },
     {
-      title: "Installer Resmi",
-      description: "Distribusi paket instalasi untuk implementasi awal maupun pemindahan perangkat kerja.",
+      title: "Installer Resmi Terverifikasi",
+      description: "Distribusi file instalasi bersih dan berlisensi untuk implementasi komputer baru maupun pemindahan server database.",
+      tag: "Installer",
     },
     {
-      title: "Prasyarat Lingkungan Sistem",
-      description: "Panduan spesifikasi server, jaringan lokal, dan database untuk stabilitas operasional maksimal.",
+      title: "Prasyarat Lingkungan & Hardware",
+      description: "Panduan spesifikasi server, sistem operasi Windows, dan konfigurasi jaringan LAN untuk stabilitas operasional multi-user.",
+      tag: "Spesifikasi",
     },
   ];
 
   return (
     <div className="min-h-screen text-foreground">
-      {/* Hero Update & Download */}
       <HeroBanner
         compact
         eyebrow="Rilis &amp; Unduhan"
-        title="Pembaruan Sistem &amp; Berkas Instalasi Terverifikasi"
-        description="Akses catatan rilis resmi, patch perbaikan, serta tautan unduhan installer yang telah divalidasi keamanannya."
+        title="Pembaruan Sistem &amp; Berkas Instalasi Resmi"
+        description="Akses catatan rilis pembaruan, patch perbaikan resmi, serta bantuan teknis instalasi langsung dari perwakilan resmi Zahir di Surabaya."
+        primaryAction={{ href: "/contact-us", label: "Minta Bantuan Instalasi" }}
       />
 
-      {/* Kartu Update & Download */}
-      <section className="bg-background py-16 sm:py-20 lg:py-24 transition-colors duration-200">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <section className="bg-background py-12 sm:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
-            {cards.map((card, idx) => (
-              <article
-                key={card.title}
-                className="flex flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
-              >
-                <div>
-                  <span className="inline-flex size-7 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-bold text-primary">0{idx + 1}</span>
-                  <h2 className="mt-4 text-lg font-bold text-foreground">{card.title}</h2>
-                  <p className="mt-2 text-xs leading-relaxed text-muted sm:text-sm">{card.description}</p>
-                </div>
-              </article>
+            {cards.map((card) => (
+              <div key={card.title} className="clean-card p-6">
+                <span className="rounded-md bg-primary-soft px-2 py-0.5 text-[11px] font-semibold text-primary">
+                  {card.tag}
+                </span>
+                <h2 className="mt-3 text-base font-semibold text-foreground">{card.title}</h2>
+                <p className="mt-2 text-xs sm:text-sm text-muted leading-relaxed">{card.description}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -48,4 +47,3 @@ export function UpdateDownloadView() {
     </div>
   );
 }
-

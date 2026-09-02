@@ -1,7 +1,8 @@
-﻿import { CompanyProfileHeroSection } from "@/components/home/company-profile-hero-section";
+import { CompanyProfileHeroSection } from "@/components/home/company-profile-hero-section";
 import { CompanyStatsSection } from "@/components/home/company-stats-section";
 import { CompanyOverviewSection } from "@/components/home/company-overview-section";
 import { ZahirAccountingFeaturesSection } from "@/components/home/zahir-accounting-features-section";
+import { CompanyTestimonialsSection } from "@/components/home/company-testimonials-section";
 import { CompanyHistoryTimelineSection } from "@/components/home/company-history-timeline-section";
 import { CompanyOfficeLocationSection } from "@/components/home/company-product-portfolio-section";
 import { CompanySurabayaServiceSection } from "@/components/home/company-surabaya-service-section";
@@ -13,29 +14,29 @@ export function HomePageView() {
       {/* 1. Hero Company Profile Zahir */}
       <CompanyProfileHeroSection />
 
-      {/* 2. Statistik & Bukti Kepercayaan Pasar (100.000+ Pengguna, 28+ Tahun, Penghargaan) */}
+      {/* 2. Statistik & Bukti Kepercayaan Pasar */}
       <CompanyStatsSection />
 
       {/* 3. Penjelasan Profil PT Zahir Internasional & Peran Zahir Surabaya */}
       <CompanyOverviewSection />
 
-      {/* 4. Fitur Utama & Informasi Umum Zahir Accounting (Pilar Keunggulan) */}
+      {/* 4. Fitur Utama & Informasi Umum Zahir Accounting */}
       <ZahirAccountingFeaturesSection />
 
-      {/* 5. Kronologi Sejarah Perjalanan Inovasi Zahir */}
+      {/* 5. 3D Perspective Testimonial Carousel */}
+      <CompanyTestimonialsSection />
+
+      {/* 6. Kronologi Sejarah Perjalanan Inovasi Zahir */}
       <CompanyHistoryTimelineSection />
 
-      {/* 6. Lokasi Kantor Zahir Accounting Surabaya */}
+      {/* 7. Lokasi Kantor & Hub Layanan Zahir dengan Fly-To Map */}
       <CompanyOfficeLocationSection />
 
-      {/* 7. Layanan & Pendampingan Resmi Area Surabaya */}
+      {/* 8. Layanan & Pendampingan Resmi Area Surabaya */}
       <CompanySurabayaServiceSection />
 
-      {/* 8. Call to Action Beranda */}
+      {/* 9. Call to Action Beranda */}
       <CompanyProfileCallToActionSection />
     </div>
   );
 }
-
-
-

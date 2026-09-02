@@ -1,26 +1,15 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { findSupportVersion, supportVersions } from "@/data/site";
-import { SupportDetailView } from "@/components/views/support-detail-view";
+import { PromoEventView } from "@/components/views/promo-event-view";
 
-type SupportDetailPageProps = { params: Promise<{ version: string }> };
-
-export function generateStaticParams() {
-  return supportVersions.map((support) => ({ version: support.slug }));
-}
-
-export async function generateMetadata({ params }: SupportDetailPageProps): Promise<Metadata> {
-  const support = findSupportVersion((await params).version);
-  return { title: support?.name ? `${support.name} | Zahir Surabaya` : "Pusat Dukungan | Zahir Surabaya" };
-}
+export const metadata: Metadata = { 
+  title: "Promo & Event | Zahir Surabaya",
+  description: "Program promo upgrade lisensi, workshop akuntansi, dan jadwal user gathering Zahir Surabaya."
+};
 
 /**
- * Rute Dinamis: /support-centre/[version] (Halaman Detail Versi Dukungan Teknis)
- * Menggunakan komponen spesifik: SupportDetailView
+ * Rute: /promo-event (Halaman Promo & Event)
+ * Menggunakan komponen spesifik: PromoEventView
  */
-export default async function SupportDetailPage({ params }: SupportDetailPageProps) {
-  const support = findSupportVersion((await params).version);
-  if (!support) notFound();
-
-  return <SupportDetailView support={support} />;
+export default function PromoEventPage() {
+  return <PromoEventView />;
 }

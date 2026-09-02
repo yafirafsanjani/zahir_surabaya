@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 type PackageKey = "smallBusiness" | "flexyTrade" | "personal" | "standard" | "enterprise";
 
@@ -109,45 +108,45 @@ const comparisonGroups: ComparisonGroup[] = [
 
 const brochureBenefits = [
   {
-    title: "Keputusan bisnis lebih tepat dan cepat",
-    description: "Grafik analisis bisnis dibuat lebih fleksibel dan informatif untuk membantu membaca kondisi usaha.",
+    title: "Keputusan Bisnis Cepat",
+    description: "Grafik analisis keuangan fleksibel untuk membaca tren pendapatan dan efisiensi biaya secara visual.",
   },
   {
-    title: "Kondisi keuangan terpantau setiap saat",
-    description: "Brosur menekankan kemudahan memantau laporan keuangan secara aman saat dibutuhkan.",
+    title: "Monitoring Real-Time",
+    description: "Pantau posisi kas, saldo bank, dan performa laba rugi kapan pun diperlukan secara aman.",
   },
   {
-    title: "Antarmuka kerja lebih nyaman",
-    description: "Tampilan Zahir Accounting 6 dirancang agar pengelolaan bisnis dan laporan terasa lebih mudah.",
+    title: "Antarmuka Sederhana",
+    description: "Desain visual yang memudahkan penginputan transaksi tanpa butuh pemahaman akuntansi rumit.",
   },
   {
-    title: "Utang dan piutang lebih terkontrol",
-    description: "Reminder dan grafik membantu memantau giro maupun tagihan yang sudah atau mendekati jatuh tempo.",
+    title: "Pengawasan Piutang",
+    description: "Grafik aging piutang dan reminder jatuh tempo untuk menjaga kesehatan cashflow usaha.",
   },
   {
-    title: "Pengelolaan persediaan lengkap",
-    description: "Pembelian dan penjualan dapat memperbarui stok serta HPP otomatis, dilengkapi pengelompokan dan stock opname.",
+    title: "Kontrol Stok Akurat",
+    description: "Pembaruan saldo stok otomatis setiap ada transaksi beli atau jual, lengkap dengan stock opname.",
   },
   {
-    title: "Training dan layanan purna jual",
-    description: "E-brosur mencantumkan training penggunaan dan layanan dukungan sebagai bagian dari pengalaman pelanggan.",
+    title: "Pelatihan & Layanan Resmi",
+    description: "Sesi training menyeluruh dan jaminan pendampingan teknis purna jual dari tim Zahir Surabaya.",
   },
 ];
 
 const brochureUsers = [
-  "Bhakti Karya - Mini Market",
-  "d'bestO - Franchise Makanan",
-  "Cardig Air & Logistic - Jasa Cargo",
-  "Dompet Dhuafa - Yayasan/Lembaga Nirlaba",
-  "Rumah Zakat - Yayasan/Lembaga Nirlaba",
-  "PT Kapuas Prima Coal - Manufaktur Pertambangan",
-  "PT Bakrie Metal Industries - Manufaktur Baja",
-  "Koperasi Syariah AHM Honda - Koperasi",
+  "Bhakti Karya",
+  "d'bestO",
+  "Cardig Air & Logistic",
+  "Dompet Dhuafa",
+  "Rumah Zakat",
+  "PT Kapuas Prima Coal",
+  "PT Bakrie Metal Industries",
+  "Koperasi Syariah AHM Honda",
 ];
 
 function AvailabilityCell({ included, packageName, featureName }: { included: boolean; packageName: string; featureName: string }) {
   return (
-    <td className="border-l border-border px-3 py-2.5 text-center">
+    <td className="border-l border-border px-3 py-2 text-center">
       {included ? (
         <span aria-label={`${featureName} tersedia pada ${packageName}`} className="inline-flex size-5 items-center justify-center rounded-full bg-primary/10 text-primary">
           <svg className="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -155,7 +154,9 @@ function AvailabilityCell({ included, packageName, featureName }: { included: bo
           </svg>
         </span>
       ) : (
-        <span aria-label={`${featureName} tidak tercantum pada ${packageName}`} className="text-muted/45">-</span>
+        <span aria-label={`${featureName} tidak tercantum`} className="text-muted/30 text-xs">
+          -
+        </span>
       )}
     </td>
   );
@@ -163,118 +164,89 @@ function AvailabilityCell({ included, packageName, featureName }: { included: bo
 
 export function ZahirAccountingComparisonSection() {
   return (
-    <section className="border-b border-border bg-surface-raised py-16 sm:py-20 lg:py-24 transition-colors duration-200">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold text-primary">
-            <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-            Informasi E-Brosur Zahir Accounting 6
-          </div>
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-foreground sm:text-4xl">Bandingkan modul Zahir Accounting 6 sesuai kebutuhan bisnis.</h2>
-          <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
-            Gunakan ringkasan manfaat dan matriks modul berikut untuk memahami perbedaan cakupan paket sebelum berkonsultasi dengan tim Zahir Surabaya.
+    <section className="bg-surface-raised py-16 sm:py-20 border-b border-border/80">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="badge-minimal">Matriks E-Brosur</span>
+          <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            Bandingkan Fitur &amp; Modul Zahir 6
+          </h2>
+          <p className="mt-2 text-xs sm:text-sm text-body">
+            Gunakan tabel perbandingan modul resmi untuk memastikan pilihan software sesuai dengan alur kerja tim Anda.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {brochureBenefits.map((benefit, index) => (
-            <article key={benefit.title} className="rounded-2xl border border-border bg-card p-5 shadow-xs transition hover:-translate-y-1 hover:border-primary/35 hover:shadow-lg hover:shadow-primary/5">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-bold text-primary">0{index + 1}</span>
-              <h3 className="mt-4 text-sm font-bold text-foreground">{benefit.title}</h3>
-              <p className="mt-1.5 text-xs leading-relaxed text-muted">{benefit.description}</p>
-            </article>
+        {/* Benefits Cards */}
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {brochureBenefits.map((b, idx) => (
+            <div className="clean-card p-5" key={b.title}>
+              <span className="text-xs font-mono font-bold text-primary">0{idx + 1}</span>
+              <h3 className="mt-2 text-sm font-semibold text-foreground">{b.title}</h3>
+              <p className="mt-1 text-xs text-muted leading-relaxed">{b.description}</p>
+            </div>
           ))}
         </div>
 
-        <div className="mt-14 overflow-hidden rounded-3xl border border-border bg-card shadow-xs">
-          <div className="flex flex-col gap-3 border-b border-border px-6 py-6 sm:px-8 md:flex-row md:items-center md:justify-between">
+        {/* Comparison Table */}
+        <div className="mt-12 overflow-hidden rounded-xl border border-border bg-card shadow-xs">
+          <div className="flex items-center justify-between border-b border-border bg-surface-raised px-6 py-4">
             <div>
-              <p className="text-xs font-bold tracking-widest text-primary uppercase">Tabel Perbandingan Modul</p>
-              <h3 className="mt-1 text-xl font-black tracking-tight text-foreground sm:text-2xl">Matriks produk Zahir Accounting 6</h3>
+              <p className="text-xs font-bold text-foreground">Tabel Perbandingan Modul Zahir Accounting 6</p>
             </div>
-            <span className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs font-semibold text-primary dark:text-primary-text">Geser tabel ke samping di perangkat mobile</span>
+            <span className="text-[11px] text-muted">Geser ke kanan pada layar kecil â†’</span>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[980px] border-collapse text-left text-xs">
-              <thead className="bg-primary text-white">
+            <table className="w-full min-w-[900px] border-collapse text-left text-xs">
+              <thead className="bg-surface-muted text-foreground font-semibold border-b border-border">
                 <tr>
-                  <th className="min-w-70 px-5 py-4 text-left text-xs font-bold sm:px-6">Modul &amp; Fasilitas</th>
-                  {packages.map((productPackage) => (
-                    <th key={productPackage.key} className="min-w-34 border-l border-white/20 px-3 py-4 text-center text-xs font-bold leading-snug">
-                      Zahir {productPackage.label}
+                  <th className="min-w-64 px-5 py-3 font-semibold">Modul &amp; Fasilitas</th>
+                  {packages.map((pkg) => (
+                    <th key={pkg.key} className="border-l border-border px-3 py-3 text-center font-semibold">
+                      Zahir {pkg.label}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-border">
                 {comparisonGroups.map((group) => (
                   <ComparisonTableGroup group={group} key={group.title} />
                 ))}
               </tbody>
               <tfoot>
                 <tr className="border-t border-border bg-surface-muted">
-                  <th className="px-5 py-4 text-left text-xs font-bold text-foreground sm:px-6">Durasi training dalam e-brosur</th>
-                  {packages.map((productPackage) => (
-                    <td className="border-l border-border px-3 py-4 text-center text-xs font-black text-primary" key={productPackage.key}>
-                      {productPackage.training}
+                  <th className="px-5 py-3 text-foreground font-semibold">Durasi Training Resmi</th>
+                  {packages.map((pkg) => (
+                    <td className="border-l border-border px-3 py-3 text-center font-bold text-primary" key={pkg.key}>
+                      {pkg.training}
                     </td>
                   ))}
                 </tr>
               </tfoot>
             </table>
           </div>
+        </div>
 
-          <div className="border-t border-border bg-surface-raised px-6 py-4 text-[11px] leading-relaxed text-muted sm:px-8">
-            Tanda centang menunjukkan modul yang tercantum pada matriks E-Brosur Zahir Accounting 6. Harga pada brosur tidak ditampilkan di tabel ini karena harga dan ketentuan paket dapat berubah; gunakan harga pada katalog di atas atau hubungi tim Zahir Surabaya untuk konfirmasi terbaru.
+        {/* Extensions */}
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <div className="clean-card p-6">
+            <h3 className="text-sm font-bold text-foreground">Modul Tambahan (Ekstensi)</h3>
+            <p className="mt-1 text-xs text-muted">Tersedia integrasi Point of Sale (POS 6) untuk kasir toko ritel dan Zahir Report Server 6 untuk pelaporan terpusat multi-cabang.</p>
+          </div>
+          <div className="clean-card p-6">
+            <h3 className="text-sm font-bold text-foreground">Konsultasi Spesifikasi Khusus</h3>
+            <p className="mt-1 text-xs text-muted">Butuh penambahan user multi-user, integrasi database cabang, atau kustomisasi format formulir? Tim Zahir Surabaya siap membantu.</p>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-2">
-          <article className="rounded-3xl border border-border bg-card p-6 shadow-xs sm:p-8">
-            <p className="text-xs font-bold tracking-widest text-primary uppercase">Tambahan yang tercantum di brosur</p>
-            <h3 className="mt-2 text-xl font-black tracking-tight text-foreground">Ekstensi untuk kebutuhan operasional.</h3>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-border bg-surface-raised p-4">
-                <p className="text-sm font-bold text-foreground">Zahir Point of Sale (POS) 6</p>
-                <p className="mt-1 text-xs leading-relaxed text-muted">Tambahan untuk mendukung aktivitas kasir dan penjualan ritel.</p>
-              </div>
-              <div className="rounded-2xl border border-border bg-surface-raised p-4">
-                <p className="text-sm font-bold text-foreground">Zahir Report Server 6</p>
-                <p className="mt-1 text-xs leading-relaxed text-muted">Tambahan untuk kebutuhan distribusi serta penyajian laporan bisnis.</p>
-              </div>
-            </div>
-          </article>
-
-          <article className="rounded-3xl border border-primary/25 bg-primary/5 p-6 sm:p-8 dark:bg-primary/10">
-            <p className="text-xs font-bold tracking-widest text-primary uppercase">Catatan Paket Small Business</p>
-            <h3 className="mt-2 text-xl font-black tracking-tight text-foreground">Batasan yang tercantum pada e-brosur.</h3>
-            <ul className="mt-5 space-y-2.5 text-xs leading-relaxed text-foreground/80">
-              <li className="flex gap-2"><span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />Tidak dapat mengatur klasifikasi akun.</li>
-              <li className="flex gap-2"><span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />Maksimal 5 user concurrent.</li>
-              <li className="flex gap-2"><span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />Maksimal omzet penjualan Rp100 juta, 1.000 item barang, dan 1.000 transaksi.</li>
-            </ul>
-          </article>
-        </div>
-
-        <div className="mt-8 rounded-3xl border border-border bg-card p-6 shadow-xs sm:p-8">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <p className="text-xs font-bold tracking-widest text-primary uppercase">Beberapa Pengguna Zahir di E-Brosur</p>
-              <h3 className="mt-2 text-xl font-black tracking-tight text-foreground">Digunakan di beragam jenis organisasi.</h3>
-            </div>
-            <Link className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-3 text-xs font-bold text-white shadow-xs transition hover:bg-primary-hover hover:shadow-md hover:shadow-primary/20" href="/contact-us">
-              Konsultasikan Paket Anda
-              <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-          </div>
-          <div className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-            {brochureUsers.map((user) => (
-              <div key={user} className="rounded-xl border border-border bg-surface-raised px-3 py-2.5 text-xs font-medium leading-relaxed text-foreground/80">
-                {user}
-              </div>
+        {/* Trust Badges */}
+        <div className="mt-8 rounded-xl border border-border bg-card p-6">
+          <p className="text-xs font-semibold text-muted uppercase tracking-wider">Dipercaya Oleh Berbagai Perusahaan &amp; Institusi</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {brochureUsers.map((u) => (
+              <span key={u} className="rounded-md border border-border bg-surface-raised px-3 py-1 text-xs font-medium text-body">
+                {u}
+              </span>
             ))}
           </div>
         </div>
@@ -286,18 +258,20 @@ export function ZahirAccountingComparisonSection() {
 function ComparisonTableGroup({ group }: { group: ComparisonGroup }) {
   return (
     <>
-      <tr className="bg-surface-muted">
-        <th className="px-5 py-3 text-left text-xs font-black text-foreground sm:px-6" colSpan={packages.length + 1}>{group.title}</th>
+      <tr className="bg-surface-raised">
+        <th className="px-5 py-2.5 text-xs font-bold text-primary" colSpan={packages.length + 1}>
+          {group.title}
+        </th>
       </tr>
       {group.rows.map((row) => (
-        <tr className="border-t border-border/80 transition hover:bg-primary/5" key={row.label}>
-          <th className="px-5 py-2.5 text-left text-xs font-medium text-foreground/85 sm:px-6">{row.label}</th>
-          {packages.map((productPackage) => (
+        <tr className="hover:bg-surface-raised transition-colors" key={row.label}>
+          <th className="px-5 py-2 font-normal text-body">{row.label}</th>
+          {packages.map((pkg) => (
             <AvailabilityCell
               featureName={row.label}
-              included={row.packages.includes(productPackage.key)}
-              key={productPackage.key}
-              packageName={`Zahir ${productPackage.label}`}
+              included={row.packages.includes(pkg.key)}
+              key={pkg.key}
+              packageName={`Zahir ${pkg.label}`}
             />
           ))}
         </tr>

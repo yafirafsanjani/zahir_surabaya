@@ -1,84 +1,162 @@
-﻿import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
-
-export const HERO_LOGO_CONFIG = {
-  mobileWidth: "100%",   // Ukuran logo pada layar HP / Mobile
-  desktopWidth: "140%",  // Ukuran logo pada layar Laptop / Desktop
-};
+import Image from "next/image";
 
 export function CompanyProfileHeroSection() {
-  const logoStyle = {
-    "--hero-logo-mobile-width": HERO_LOGO_CONFIG.mobileWidth,
-    "--hero-logo-desktop-width": HERO_LOGO_CONFIG.desktopWidth,
-  } as CSSProperties;
-
   return (
-    <section className="relative isolate overflow-hidden border-b border-border bg-background bg-grid-pattern transition-colors duration-200">
-      <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-[32rem] w-[40rem] -translate-x-1/2 rounded-full bg-primary/10 blur-[130px]" />
-      <div className="pointer-events-none absolute right-[-8rem] bottom-[-10rem] -z-10 size-80 rounded-full bg-sky-500/10 blur-[110px]" />
+    <section className="relative overflow-hidden py-14 sm:py-20 lg:py-24 border-b border-border/70">
+      {/* Background Image with Clean Overlay */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          alt="Office desk business background"
+          className="object-cover object-center"
+          fill
+          priority
+          sizes="100vw"
+          src="/images/hero-bg.jpg"
+        />
+        {/* Semi-transparent Backdrop for Contrast & Clean Look */}
+        <div className="absolute inset-0 bg-white/90 backdrop-blur-[2px] dark:bg-[#090d16]/92" />
+      </div>
 
-      <div className="mx-auto grid max-w-6xl items-center gap-8 px-6 pt-10 pb-16 sm:pt-14 sm:pb-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pt-16 lg:pb-24">
-        {/* Kolom Teks Informasi (Kiri) */}
-        <div className="relative z-10">
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary">
-              <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-              Company Profile &middot; Zahir Surabaya
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          {/* Left Column: Reference Layout */}
+          <div className="max-w-2xl">
+            {/* Pill Tag */}
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-card/95 px-3 py-1 text-xs shadow-2xs backdrop-blur-sm">
+              <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                RESMI JATIM
+              </span>
+              <span className="text-muted text-[11px] font-medium">
+                Konsultasi &amp; Demo Sistem{" "}
+                <span className="font-bold text-primary">100% Gratis</span>
+              </span>
             </div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-raised px-3 py-1 text-xs font-bold text-foreground">
-              <span className="text-primary font-black">100.000+</span> Pengguna Aktif
+
+            {/* Massive 3-Line Headline */}
+            <h1 className="mt-7 text-5xl font-black tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-[1.02]">
+              Software Akuntansi
+              <span className="block font-black">Terbaik untuk</span>
+              <span className="block font-black text-primary">Bisnis Anda.</span>
+            </h1>
+
+            {/* Paragraph Description */}
+            <p className="mt-6 text-base leading-relaxed text-body sm:text-lg max-w-xl">
+              Kelola pencatatan keuangan, kontrol persediaan barang, rekonsiliasi kas/bank, hingga laporan laba rugi otomatis. Dapatkan pendampingan implementasi dan pelatihan staf resmi di Surabaya.
+            </p>
+
+            {/* Actions */}
+            <div className="mt-8 flex flex-wrap items-center gap-5">
+              <Link
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md shadow-primary/25 transition-all duration-180 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/35 hover:-translate-y-0.5 active:translate-y-0"
+                href="/product"
+              >
+                <span>Lihat Solusi</span>
+                <span className="text-base font-bold leading-none">↗</span>
+              </Link>
+
+              <Link
+                className="inline-flex items-center gap-2 text-sm font-bold text-foreground transition-colors hover:text-primary group"
+                href="/contact-us"
+              >
+                <span>Konsultasi Gratis</span>
+                <span className="text-base font-bold transition-transform duration-180 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </div>
+
+            {/* Trust Metrics */}
+            <div className="mt-12 flex flex-wrap items-center gap-8 border-t border-border/80 pt-6">
+              <div>
+                <p className="text-2xl font-black text-foreground">100.000+</p>
+                <p className="text-xs font-medium text-muted">Pengguna Bisnis</p>
+              </div>
+              <div className="h-8 w-px bg-border" />
+              <div>
+                <p className="text-2xl font-black text-foreground">28+ Tahun</p>
+                <p className="text-xs font-medium text-muted">Inovasi Software</p>
+              </div>
+              <div className="h-8 w-px bg-border" />
+              <div>
+                <p className="text-2xl font-black text-foreground">Official Hub</p>
+                <p className="text-xs font-medium text-muted">Surabaya &amp; Jatim</p>
+              </div>
             </div>
           </div>
 
-          <h1 className="mt-4 max-w-2xl text-4xl font-black tracking-tight text-foreground sm:text-5xl lg:text-6xl lg:leading-[1.06]">
-            Mengenal Zahir,
-            <span className="block bg-gradient-to-r from-blue-600 via-sky-500 to-blue-700 dark:from-blue-400 dark:via-sky-300 dark:to-blue-500 bg-clip-text text-transparent">
-              solusi akuntansi untuk bisnis Indonesia.
-            </span>
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/80 sm:text-lg">
-            PT Zahir Internasional adalah pionir software akuntansi bisnis yang telah dipercaya lebih dari 100.000 perusahaan selama 28 tahun untuk mengelola transaksi, stok, pajak, dan laporan keuangan secara terstruktur.
-          </p>
-          <p className="mt-3.5 max-w-xl text-sm leading-relaxed text-muted">
-            Zahir Surabaya siap menjadi mitra strategis Anda dalam konsultasi varian produk, setup implementasi, pelatihan staf, dan integrasi sistem bisnis di wilayah Jawa Timur.
-          </p>
+          {/* Right Column: Clean Layered Dashboard Visual */}
+          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+            <div className="relative space-y-4">
+              {/* Main Card */}
+              <div className="rounded-2xl border border-border bg-card/95 p-6 shadow-xl shadow-primary/5 transition hover:border-primary/30 backdrop-blur-sm">
+                <div className="flex items-center justify-between border-b border-border/60 pb-3.5">
+                  <div className="flex items-center gap-2">
+                    <div className="flex size-7 items-center justify-center rounded-lg bg-primary text-xs font-bold text-white">
+                      ZS
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-foreground">Zahir Accounting 6</p>
+                      <p className="text-[10px] text-muted">Ringkasan Finansial Real-Time</p>
+                    </div>
+                  </div>
+                  <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400">
+                    ● Sistem Aktif
+                  </span>
+                </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/25"
-              href="/product"
-            >
-              <span>Jelajahi Produk Zahir</span>
-              <svg className="size-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-            <Link
-              className="rounded-full border border-border bg-surface px-6 py-3 text-xs font-semibold text-foreground shadow-xs transition hover:border-primary/40 hover:bg-surface-raised hover:text-primary"
-              href="/contact-us"
-            >
-              Bicara dengan Zahir Surabaya
-            </Link>
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-xl border border-border bg-surface-raised p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted">Saldo Kas &amp; Bank</p>
+                    <p className="mt-1 text-2xl font-black text-foreground">Rp 184,5 jt</p>
+                    <p className="mt-1 text-[11px] font-semibold text-primary">↑ 18,4% bulan ini</p>
+                  </div>
+
+                  <div className="rounded-xl border border-border bg-surface-raised p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted">Laba Bersih</p>
+                    <p className="mt-1 text-2xl font-black text-primary">Rp 92,4 jt</p>
+                    <p className="mt-1 text-[11px] font-medium text-muted">Margin 25,1%</p>
+                  </div>
+                </div>
+
+                {/* Minimal Chart Bar */}
+                <div className="mt-4 rounded-xl border border-border bg-surface-raised p-4">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-bold text-foreground">Grafik Arus Kas &amp; Penjualan</span>
+                    <span className="text-[11px] text-muted">2026</span>
+                  </div>
+                  <div className="mt-4 flex h-20 items-end gap-2 px-1">
+                    {[40, 65, 50, 85, 70, 95, 80, 100].map((h, i) => (
+                      <div className="flex flex-1 flex-col items-center gap-1" key={i}>
+                        <div
+                          className="w-full rounded-t bg-primary transition-all duration-200 hover:bg-primary-hover"
+                          style={{ height: `${h}%`, opacity: 0.4 + i * 0.08 }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Sub Card */}
+              <div className="rounded-xl border border-border bg-card/95 p-4 shadow-lg sm:flex sm:items-center sm:justify-between backdrop-blur-sm">
+                <div className="flex items-center gap-3">
+                  <div className="flex size-9 items-center justify-center rounded-lg bg-primary-soft text-primary font-bold">
+                    ✓
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-foreground">Pendampingan Onsite &amp; Remote</p>
+                    <p className="text-[11px] text-muted">Setup Chart of Accounts &amp; Pelatihan Staf</p>
+                  </div>
+                </div>
+                <span className="mt-2 sm:mt-0 text-[11px] font-bold text-primary">
+                  Surabaya &amp; Jatim
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Kolom Logo Zahir (Kanan, sejajar dengan teks) */}
-        <div
-          style={logoStyle}
-          className="relative z-10 flex min-h-[200px] items-center justify-center lg:min-h-[300px] lg:justify-center"
-        >
-          <Image
-            alt="Logo Zahir"
-            className="h-auto w-[var(--hero-logo-mobile-width)] max-w-full shrink-0 object-contain transition-all duration-300 lg:max-w-none lg:w-[var(--hero-logo-desktop-width)] lg:translate-x-10"
-            height={360}
-            priority
-            src="/zahir-logo.svg"
-            width={1280}
-          />
         </div>
       </div>
     </section>
   );
 }
-

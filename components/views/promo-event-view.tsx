@@ -4,21 +4,23 @@ export function PromoEventView() {
   const cards = [
     {
       title: "Program Transisi & Upgrade Lisensi",
-      description: "Penawaran terstruktur untuk peningkatan versi atau ekspansi jumlah user operasional.",
+      description: "Penawaran terstruktur untuk peningkatan versi software ke Zahir 6, penambahan user license, atau ekspansi multi-cabang.",
+      tag: "Lisensi",
     },
     {
-      title: "Webinar Akuntansi Bisnis",
-      description: "Sesi sharing berkala membahas praktik tata kelola finansial untuk pemilik usaha dan staf finance.",
+      title: "Webinar & Klinik Akuntansi Bisnis",
+      description: "Sesi sharing berkala membahas praktik tata kelola finansial, rekonsiliasi kas, dan kepatuhan faktur pajak untuk pemilik usaha.",
+      tag: "Workshop",
     },
     {
       title: "User Gathering & Diskusi Komunitas",
-      description: "Ruang temu praktisi bisnis di wilayah Jawa Timur untuk berbagi pengalaman implementasi sistem.",
+      description: "Ruang temu praktisi dan pelaku bisnis di wilayah Jawa Timur untuk berbagi best practice implementasi sistem.",
+      tag: "Komunitas",
     },
   ];
 
   return (
     <div className="min-h-screen text-foreground">
-      {/* Hero Promo & Event */}
       <HeroBanner
         compact
         eyebrow="Agenda &amp; Program"
@@ -27,21 +29,17 @@ export function PromoEventView() {
         primaryAction={{ href: "/contact-us", label: "Tanyakan Jadwal Terdekat" }}
       />
 
-      {/* Kartu Daftar Promo & Event */}
-      <section className="bg-background py-16 sm:py-20 lg:py-24 transition-colors duration-200">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <section className="bg-background py-12 sm:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
-            {cards.map((card, idx) => (
-              <article
-                key={card.title}
-                className="flex flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
-              >
-                <div>
-                  <span className="inline-flex size-7 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-bold text-primary">0{idx + 1}</span>
-                  <h2 className="mt-4 text-lg font-bold text-foreground">{card.title}</h2>
-                  <p className="mt-2 text-xs leading-relaxed text-muted sm:text-sm">{card.description}</p>
-                </div>
-              </article>
+            {cards.map((card) => (
+              <div key={card.title} className="clean-card p-6">
+                <span className="rounded-md bg-primary-soft px-2 py-0.5 text-[11px] font-semibold text-primary">
+                  {card.tag}
+                </span>
+                <h2 className="mt-3 text-base font-semibold text-foreground">{card.title}</h2>
+                <p className="mt-2 text-xs sm:text-sm text-muted leading-relaxed">{card.description}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -49,4 +47,3 @@ export function PromoEventView() {
     </div>
   );
 }
-

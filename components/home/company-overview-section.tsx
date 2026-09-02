@@ -1,51 +1,46 @@
-﻿const companyHighlights = [
+const highlights = [
   {
-    number: "01",
-    title: "Profil PT Zahir Internasional",
-    description:
-      "Perusahaan teknologi pengembang software akuntansi dan solusi manajemen bisnis terkemuka di Indonesia sejak 1996, yang telah mengantongi berbagai penghargaan nasional dan sertifikasi mutu ISO 9001:2015.",
+    title: "Alur Kerja Praktis & Terintegrasi",
+    description: "Semua alur dari order pembelian, penerimaan gudang, kas/bank, hingga penjualan terhubung otomatis ke jurnal pembukuan.",
   },
   {
-    number: "02",
-    title: "Filosofi Desain Intuitif",
-    description:
-      "Zahir memelopori pendekatan antarmuka visual berbasis formulir transaksi bisnis sehari-hari, memungkinkan siapa pun membuat laporan keuangan tanpa harus ahli di bidang debit-kredit akuntansi.",
+    title: "Laporan Keuangan Cepat & Akurat",
+    description: "Dapatkan laporan laba rugi, neraca saldo, arus kas, dan analisis piutang usaha secara real-time kapan pun dibutuhkan.",
   },
   {
-    number: "03",
-    title: "Peran Strategis Zahir Surabaya",
-    description:
-      "Bertindak sebagai pusat layanan resmi untuk wilayah Surabaya dan Jawa Timur, menyediakan konsultasi pemilihan paket, setup bagan akun (COA), migrasi data, hingga pelatihan intensif staf perusahaan.",
+    title: "Pendampingan Resmi di Surabaya",
+    description: "Tim ahli Zahir Surabaya siap mendampingi kebutuhan setup COA, migrasi data, serta pelatihan operator dan staf akuntansi Anda.",
   },
 ];
 
 export function CompanyOverviewSection() {
   return (
-    <section className="border-b border-border bg-surface-raised py-16 sm:py-20 transition-colors duration-200">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
+    <section className="bg-background py-16 sm:py-20 border-b border-border/80">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
-            <p className="text-xs font-bold tracking-widest text-primary uppercase">Company Profile</p>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-              Dedikasi Membangun Ekosistem Bisnis yang Tangguh dan Terintegrasi.
+            <span className="badge-minimal">Tentang Zahir</span>
+            <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Mengubah Transaksi Harian Menjadi Keputusan Bisnis yang Jelas.
             </h2>
           </div>
-          <div className="border-l border-border pl-6 text-sm leading-relaxed text-muted sm:pl-8 sm:text-base">
-            Sebagai pionir software akuntansi di Indonesia, PT Zahir Internasional terus berinovasi mengubah kerumitan pembukuan konvensional menjadi otomatisasi cerdas. Dari pengelolaan kas harian hingga pengambilan keputusan strategis berbasis data, Zahir mendampingi perjalanan bisnis dari skala rintisan hingga korporasi besar.
-          </div>
+          <p className="text-sm leading-relaxed text-body sm:text-base">
+            PT Zahir Internasional berdedikasi membangun software akuntansi bisnis yang menyatukan pencatatan keuangan, kontrol stok multi-gudang, dan pengawasan operasional ke dalam satu sistem yang mudah digunakan.
+          </p>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {companyHighlights.map((item) => (
-            <article className="rounded-3xl border border-border bg-card p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5" key={item.title}>
-              <span className="inline-flex size-7 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-bold text-primary">{item.number}</span>
-              <h3 className="mt-4 text-lg font-bold text-foreground">{item.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted sm:text-sm">{item.description}</p>
-            </article>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {highlights.map((item, idx) => (
+            <div className="clean-card p-6" key={item.title}>
+              <div className="flex size-7 items-center justify-center rounded-md bg-primary-soft text-xs font-bold text-primary font-mono">
+                0{idx + 1}
+              </div>
+              <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
+              <p className="mt-2 text-xs sm:text-sm text-muted leading-relaxed">{item.description}</p>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
