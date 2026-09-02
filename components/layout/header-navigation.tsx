@@ -140,19 +140,27 @@ export function HeaderNavigation() {
               return (
                 <div key={item.href} className="border-b border-border/50 py-3.5">
                   {hasChildren ? (
-                    <button
-                      aria-expanded={expanded}
-                      className={`flex w-full items-center justify-between gap-3 text-left text-[15px] font-semibold transition-colors ${
-                        active ? "text-primary" : "text-foreground"
-                      }`}
-                      onClick={() => setExpandedItems((curr) => ({ ...curr, [item.href]: !curr[item.href] }))}
-                      type="button"
-                    >
-                      <span>{item.label}</span>
-                      <svg className={`size-4 shrink-0 text-muted transition-transform duration-150 ${expanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                      </svg>
-                    </button>
+                    <div className="flex items-center justify-between gap-3">
+                      <Link
+                        className={`text-[15px] font-semibold transition-colors ${
+                          active ? "text-primary" : "text-foreground"
+                        }`}
+                        href={item.href}
+                        onClick={closeMobileMenu}
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        aria-expanded={expanded}
+                        className="inline-flex size-6 shrink-0 items-center justify-center rounded text-muted"
+                        onClick={() => setExpandedItems((curr) => ({ ...curr, [item.href]: !curr[item.href] }))}
+                        type="button"
+                      >
+                        <svg className={`size-4 transition-transform duration-150 ${expanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                      </button>
+                    </div>
                   ) : (
                     <Link
                       className={`block text-[15px] font-semibold transition-colors ${
