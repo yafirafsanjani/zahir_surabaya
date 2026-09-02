@@ -38,7 +38,7 @@ export function ProductInteractiveGrid() {
           </div>
 
           {/* Minimalist Filter Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-lg border-2 border-primary bg-card">
+          <div className="flex flex-wrap gap-1.5 p-1 rounded-lg border border-border bg-card">
             {filters.map((opt) => (
               <button
                 key={opt.key}
@@ -46,7 +46,7 @@ export function ProductInteractiveGrid() {
                 className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
                   filter === opt.key
                     ? "bg-primary text-white"
-                    : "text-primary hover:bg-primary-soft"
+                    : "text-body hover:bg-surface-raised hover:text-foreground"
                 }`}
                 type="button"
               >
@@ -57,57 +57,61 @@ export function ProductInteractiveGrid() {
         </div>
 
         {/* Product Grid */}
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
           {filteredProducts.map((product) => (
             <article
               key={product.slug}
-              className="flex flex-col justify-between overflow-hidden rounded-xl border-2 border-primary bg-card transition-transform duration-200 hover:-translate-y-0.5"
+              className="flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_12px_32px_-12px_rgba(0,98,255,0.18)]"
             >
-              <div className="flex flex-1 flex-col p-4 sm:p-5">
-                <div className="flex items-center gap-2">
-                  <span className="rounded bg-primary px-2.5 py-1 text-[11px] font-semibold text-white">
-                    {product.audience}
-                  </span>
-                </div>
+              {/* Header */}
+              <div className="flex flex-1 flex-col px-5 pb-5 pt-6 sm:px-6">
+                <span className="inline-flex w-fit rounded-full border border-border bg-background px-3 py-1 text-[11px] font-medium text-body">
+                  {product.audience}
+                </span>
 
-                <h3 className="mt-3 text-lg font-bold tracking-tight text-foreground">
+                <h3 className="mt-4 text-lg font-bold tracking-tight text-foreground">
                   {product.name}
                 </h3>
 
-                <p className="mt-1.5 text-sm text-body leading-snug">
+                <p className="mt-1.5 text-[13px] leading-relaxed text-body">
                   {product.description}
                 </p>
 
-                {/* Highlighted Price */}
-                <div className="mt-4 rounded-lg bg-primary px-4 py-4 text-center">
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-white/90">
-                    Harga Resmi
+                {/* Price */}
+                <div className="mt-6 border-t border-border/70 pt-5">
+                  <p className="text-[11px] font-medium uppercase tracking-widest text-muted">
+                    Harga
                   </p>
-                  <p className="mt-1.5 text-2xl sm:text-3xl font-extrabold leading-tight text-white whitespace-nowrap">
+                  <p className="mt-2 text-3xl font-bold tracking-tight text-primary">
                     {product.price}
                   </p>
+                  {product.priceNote && (
+                    <p className="mt-2 text-xs leading-relaxed text-muted">
+                      {product.priceNote}
+                    </p>
+                  )}
                 </div>
 
-                <ul className="mt-4 space-y-2">
+                {/* Benefits */}
+                <ul className="mt-6 space-y-2.5">
                   {product.benefits.slice(0, 3).map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-2.5 text-sm text-body leading-snug">
-                      <span className="mt-1 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary">
-                        <svg className="size-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </span>
+                    <li key={benefit} className="flex items-start gap-2.5 text-sm leading-snug text-body">
+                      <svg className="mt-0.5 size-4 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
                       <span>{benefit}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="border-t-2 border-primary bg-card px-4 py-3 sm:px-5">
+              {/* Footer CTA */}
+              <div className="border-t border-border bg-background/60 px-5 py-4 sm:px-6">
                 <Link
-                  className="inline-flex items-center justify-center gap-1.5 w-full rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary-hover"
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-hover"
                   href={`/product/${product.slug}`}
                 >
-                  <span>Lihat Detail Modul</span>
+                  <span>Lihat Detail</span>
                   <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>

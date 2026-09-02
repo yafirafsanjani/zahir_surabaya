@@ -13,9 +13,18 @@ export function HeaderNavigation() {
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    const root = document.documentElement;
+    const body = document.body;
+    if (mobileMenuOpen) {
+      body.style.overflow = "hidden";
+      root.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
+      root.style.overflow = "";
+    }
     return () => {
-      document.body.style.overflow = "";
+      body.style.overflow = "";
+      root.style.overflow = "";
     };
   }, [mobileMenuOpen]);
 
@@ -29,7 +38,8 @@ export function HeaderNavigation() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/85 backdrop-blur-md">
+    <>
+      <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/85 backdrop-blur-md">
       {/* Subtle flowing top line */}
       <div className="h-[2px] w-full flow-border" />
 
@@ -115,47 +125,51 @@ export function HeaderNavigation() {
           </button>
         </div>
       </div>
+      </header>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown - rendered outside <header> to avoid backdrop-filter containing-block
+          making position:fixed behave like absolute (which let page content bleed through / clip). */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[66px] z-50 overflow-y-auto bg-background/95 p-5 backdrop-blur-md md:hidden animate-subtle-in border-t border-border">
-          <div className="space-y-1">
+        <div className="fixed inset-x-0 bottom-0 top-[66px] z-[9999] overflow-y-auto overscroll-contain bg-background px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-2 md:hidden animate-subtle-in border-t border-border">
+          <nav aria-label="Navigasi mobile" className="mx-auto max-w-md space-y-0.5">
             {publicNavigation.map((item) => {
               const active = isActiveRoute(item.href);
               const hasChildren = Boolean(item.children?.length);
               const expanded = expandedItems[item.href] || active;
 
               return (
-                <div key={item.href} className="border-b border-border/50 py-2">
-                  <div className="flex items-center justify-between">
+                <div key={item.href} className="border-b border-border/50 py-3.5">
+                  {hasChildren ? (
+                    <button
+                      aria-expanded={expanded}
+                      className={`flex w-full items-center justify-between gap-3 text-left text-[15px] font-semibold transition-colors ${
+                        active ? "text-primary" : "text-foreground"
+                      }`}
+                      onClick={() => setExpandedItems((curr) => ({ ...curr, [item.href]: !curr[item.href] }))}
+                      type="button"
+                    >
+                      <span>{item.label}</span>
+                      <svg className={`size-4 shrink-0 text-muted transition-transform duration-150 ${expanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+                  ) : (
                     <Link
-                      className={`text-sm font-semibold transition-colors ${
-                        active ? "text-primary" : "text-foreground hover:text-primary"
+                      className={`block text-[15px] font-semibold transition-colors ${
+                        active ? "text-primary" : "text-foreground"
                       }`}
                       href={item.href}
                       onClick={closeMobileMenu}
                     >
                       {item.label}
                     </Link>
-                    {hasChildren && (
-                      <button
-                        aria-expanded={expanded}
-                        className="p-1 text-muted"
-                        onClick={() => setExpandedItems((curr) => ({ ...curr, [item.href]: !curr[item.href] }))}
-                        type="button"
-                      >
-                        <svg className={`size-4 transition-transform duration-150 ${expanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
+                  )}
                   {hasChildren && expanded && (
-                    <div className="mt-2 space-y-1 pl-3 border-l border-border">
+                    <div className="mt-3 space-y-1 border-l-2 border-primary/25 pl-3">
                       {item.children?.map((child) => (
                         <Link
-                          className={`block py-1 text-xs font-medium ${
-                            pathname === child.href ? "text-primary font-semibold" : "text-body"
+                          className={`block rounded-md py-1.5 pl-2 pr-2 text-sm font-medium ${
+                            pathname === child.href ? "text-primary" : "text-body"
                           }`}
                           href={child.href}
                           key={child.href}
@@ -169,15 +183,15 @@ export function HeaderNavigation() {
                 </div>
               );
             })}
-          </div>
+          </nav>
 
-          <div className="mt-6 pt-4">
-            <Link className="btn-primary w-full justify-center py-2.5" href="/contact-us" onClick={closeMobileMenu}>
+          <div className="mx-auto max-w-md pt-6 pb-2">
+            <Link className="btn-primary w-full justify-center py-3" href="/contact-us" onClick={closeMobileMenu}>
               Jadwalkan Konsultasi
             </Link>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
