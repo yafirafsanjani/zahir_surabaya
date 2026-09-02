@@ -1,6 +1,5 @@
-import { ProductInteractiveGrid } from "@/components/home/product-interactive-grid";
-import { ZahirAccountingComparisonSection } from "@/components/home/zahir-accounting-comparison-section";
 import { HeroBanner } from "@/components/sections/hero-banner";
+import { ProductCategoryGrid } from "@/components/product/product-category-grid";
 
 export function ProductCatalogView() {
   return (
@@ -8,12 +7,12 @@ export function ProductCatalogView() {
       <HeroBanner
         compact
         eyebrow="Katalog Produk"
-        title="Pilihan Solusi Software Akuntansi Zahir"
-        description="Jelajahi seluruh varian produk Zahir yang dirancang spesifik untuk mendukung efisiensi operasional dan ketepatan pembukuan bisnis Anda."
+        title="Solusi Bisnis Modern Zahir"
+        description="Jelajahi portofolio lengkap produk dan layanan Zahir — dari akuntansi, ERP, HR, POS, hingga solusi berbasis AI — dirancang untuk mendukung efisiensi operasional dan pertumbuhan bisnis Anda."
+        primaryAction={{ href: "/contact-us", label: "Konsultasikan Kebutuhan" }}
       />
 
-      <ProductInteractiveGrid />
-      <ZahirAccountingComparisonSection />
+      <ProductCategoryGrid />
     </div>
   );
 }
