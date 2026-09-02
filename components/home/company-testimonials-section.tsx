@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CardCarousel3D } from "@/components/ui/card-carousel-3d";
 
 const testimonials = [
@@ -37,37 +38,74 @@ const testimonials = [
 
 export function CompanyTestimonialsSection() {
   return (
-    <section className="bg-background py-16 sm:py-20 border-b border-border/80">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-background py-6 sm:py-10 border-b border-border/80">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        {/* Play Store Style Rating Header */}
         <div className="max-w-2xl text-center mx-auto">
-          <span className="badge-minimal">Pengalaman Pengguna</span>
-          <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          <span className="badge-minimal">Ulasan Pengguna</span>
+          <h2 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Dipercaya Pelaku Usaha di Seluruh Sektor
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-body">
+          <p className="mt-0.5 text-xs sm:text-sm text-body">
             Kisah nyata bagaimana Zahir membantu merapikan administrasi transaksi dan mempercepat keputusan bisnis.
           </p>
+
+          {/* Play Store Rating Card */}
+          <div className="mt-3 inline-flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2 shadow-sm">
+            {/* Play logo image */}
+            <div className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-blue-600">
+              <Image
+                src="/images/Logo playstore.png"
+                alt="Logo Google Play"
+                width={44}
+                height={44}
+                className="size-full object-contain"
+              />
+            </div>
+
+            <div className="text-left">
+              <p className="text-[11px] font-semibold text-muted">Zahir Apps di Google Play</p>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-0.5" aria-label="Rating 4.0 dari 5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} className={`size-4 ${i < 4 ? "text-amber-400" : "text-border"}`} fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm font-bold text-foreground">4.0</span>
+              </div>
+              <p className="text-[10px] text-muted">204 ulasan · Zahir Internasional</p>
+            </div>
+          </div>
         </div>
 
         {/* 3D Perspective Card Carousel */}
-        <div className="mt-8">
+        <div className="mt-4">
           <CardCarousel3D autoPlay={false}>
             {testimonials.map((item) => (
               <div
                 key={item.author}
-                className="clean-card flex flex-col justify-between p-6 sm:p-7 shadow-md bg-card"
+                className="clean-card flex flex-col justify-between p-5 sm:p-6 shadow-md bg-card"
               >
                 <div>
-                  <div className="flex items-center justify-between border-b border-border/60 pb-3">
+                  <div className="flex items-center justify-between border-b border-border/60 pb-2.5">
                     <span className="text-[11px] font-semibold text-primary">{item.sector}</span>
-                    <span className="text-amber-500 text-xs">★★★★★</span>
+                    {/* Play Store styled stars */}
+                    <div className="flex items-center gap-0.5" aria-label="5 bintang">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} className="size-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
                   </div>
-                  <p className="mt-4 text-xs sm:text-sm text-foreground leading-relaxed italic">
+                  <p className="mt-3 text-xs sm:text-sm text-foreground leading-relaxed italic">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-border/60 flex items-center gap-3">
+                <div className="mt-4 pt-3 border-t border-border/60 flex items-center gap-3">
                   <div className="flex size-8 items-center justify-center rounded-full bg-primary-soft text-xs font-bold text-primary">
                     {item.author.charAt(0)}
                   </div>

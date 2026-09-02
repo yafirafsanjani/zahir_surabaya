@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 interface LocationPin {
@@ -10,6 +9,8 @@ interface LocationPin {
   city: string;
   address: string;
   service: string;
+  phone: string;
+  email: string;
   embedUrl: string;
   mapsUrl: string;
   lat: number;
@@ -22,84 +23,22 @@ const locations: LocationPin[] = [
     name: "Kantor Layanan Utama Zahir Surabaya",
     badge: "Head Office Hub Jatim",
     city: "Surabaya, Jawa Timur",
-    address: "Pusat Bisnis Surabaya & Hub Representasi Resmi Jawa Timur",
+    address: "Jl. Klampis Harapan I No.10 Blok AA7, Klampis Ngasem, Kec. Sukolilo, Surabaya, Jawa Timur 60117",
     service: "Konsultasi Produk, Demo Lengkap, Setup COA, Training Onsite & Remote",
+    phone: "08117577444",
+    email: "zahirsby@gmail.com",
     embedUrl: "https://www.google.com/maps?q=Zahir%20Accounting%20Surabaya&output=embed",
-    mapsUrl: "https://share.google/en5SdkJwDWySfDT6t",
-    lat: -7.2575,
-    lng: 112.7521,
-  },
-  {
-    id: "sidoarjo",
-    name: "Area Pendampingan Sidoarjo",
-    badge: "Kawasan Industri & Dagang",
-    city: "Sidoarjo, Jawa Timur",
-    address: "Kawasan Industri & Pergudangan Sidoarjo",
-    service: "Implementasi Sistem Stok Multi-Gudang & Integrasi Kasir POS",
-    embedUrl: "https://www.google.com/maps?q=Sidoarjo%20Jawa%20Timur&output=embed",
-    mapsUrl: "https://www.google.com/maps?q=Sidoarjo%20Jawa%20Timur",
-    lat: -7.4726,
-    lng: 112.6675,
-  },
-  {
-    id: "gresik",
-    name: "Area Pendampingan Gresik",
-    badge: "Sentra Manufaktur & Distribusi",
-    city: "Gresik, Jawa Timur",
-    address: "Kawasan Industri & Logistik Gresik",
-    service: "Setup Modul Manufaktur, HPP Produksi, & Job Order Costing",
-    embedUrl: "https://www.google.com/maps?q=Gresik%20Jawa%20Timur&output=embed",
-    mapsUrl: "https://www.google.com/maps?q=Gresik%20Jawa%20Timur",
-    lat: -7.1566,
-    lng: 112.6555,
-  },
-  {
-    id: "malang",
-    name: "Area Pendampingan Malang Raya",
-    badge: "Sentra UKM & Jasa",
-    city: "Malang & Pasuruan",
-    address: "Malang Raya & Pasuruan",
-    service: "Otomatisasi Pembukuan Usaha Berkembang & Jasa Profesional",
-    embedUrl: "https://www.google.com/maps?q=Malang%20Jawa%20Timur&output=embed",
-    mapsUrl: "https://www.google.com/maps?q=Malang%20Jawa%20Timur",
-    lat: -7.9797,
-    lng: 112.6304,
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jl.+Klampis+Harapan+I+No.10+Surabaya",
+    lat: -7.2961,
+    lng: 112.7867,
   },
 ];
 
 export function InteractiveLocationMap() {
-  const [selectedId, setSelectedId] = useState<string>("surabaya");
-  const activeLocation = locations.find((l) => l.id === selectedId) || locations[0];
+  const activeLocation = locations[0];
 
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-      {/* Top Location Selector Pills (Fly-To Buttons) */}
-      <div className="flex flex-wrap items-center gap-2 border-b border-border bg-surface-raised p-4 sm:p-5">
-        <span className="text-xs font-bold text-muted mr-1">Pilih Lokasi Hub:</span>
-        {locations.map((loc) => {
-          const isActive = loc.id === selectedId;
-          return (
-            <button
-              key={loc.id}
-              onClick={() => setSelectedId(loc.id)}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all duration-200 ${
-                isActive
-                  ? "bg-primary text-white shadow-xs scale-[1.02]"
-                  : "border border-border bg-card text-body hover:border-primary/40 hover:text-foreground"
-              }`}
-              type="button"
-            >
-              <span
-                className={`size-1.5 rounded-full ${
-                  isActive ? "bg-white animate-pulse" : "bg-primary"
-                }`}
-              />
-              <span>{loc.city.split(",")[0]}</span>
-            </button>
-          );
-        })}
-      </div>
-
       {/* Main Grid: Details + Map Viewport */}
       <div className="grid lg:grid-cols-[1.05fr_1.15fr]">
         {/* Left: Active Location Card with Motion */}
@@ -120,13 +59,36 @@ export function InteractiveLocationMap() {
               {activeLocation.name}
             </h3>
 
-            <p className="mt-2 text-xs sm:text-sm text-body leading-relaxed">
-              {activeLocation.address}
-            </p>
+            <div className="mt-2 flex items-start gap-2 text-sm sm:text-base text-body leading-relaxed">
+              <svg className="mt-0.5 size-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+              </svg>
+              <span>{activeLocation.address}</span>
+            </div>
 
-            <div className="mt-6 rounded-lg border border-border bg-surface-raised p-4 space-y-2">
-              <p className="text-xs font-semibold text-foreground">Fokus Layanan:</p>
-              <p className="text-xs text-muted leading-relaxed">{activeLocation.service}</p>
+            <div className="mt-6 space-y-3">
+              <p className="text-sm font-semibold text-foreground">Kontak:</p>
+              <a
+                href={`https://wa.me/${activeLocation.phone}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 text-sm text-body hover:text-primary transition-colors"
+              >
+                <svg className="size-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+                <span>{activeLocation.phone}</span>
+              </a>
+              <a
+                href={`mailto:${activeLocation.email}`}
+                className="flex items-center gap-2 text-sm text-body hover:text-primary transition-colors"
+              >
+                <svg className="size-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+                <span>{activeLocation.email}</span>
+              </a>
             </div>
           </div>
 

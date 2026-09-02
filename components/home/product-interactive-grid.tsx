@@ -38,15 +38,15 @@ export function ProductInteractiveGrid() {
           </div>
 
           {/* Minimalist Filter Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-lg border border-border bg-surface-raised">
+          <div className="flex flex-wrap gap-1.5 p-1 rounded-lg border-2 border-primary bg-card">
             {filters.map((opt) => (
               <button
                 key={opt.key}
                 onClick={() => setFilter(opt.key)}
-                className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
                   filter === opt.key
-                    ? "bg-card text-foreground shadow-xs font-semibold"
-                    : "text-muted hover:text-foreground"
+                    ? "bg-primary text-white"
+                    : "text-primary hover:bg-primary-soft"
                 }`}
                 type="button"
               >
@@ -57,44 +57,58 @@ export function ProductInteractiveGrid() {
         </div>
 
         {/* Product Grid */}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
           {filteredProducts.map((product) => (
             <article
               key={product.slug}
-              className="clean-card flex flex-col justify-between p-6 sm:p-7"
+              className="flex flex-col justify-between overflow-hidden rounded-xl border-2 border-primary bg-card transition-transform duration-200 hover:-translate-y-0.5"
             >
-              <div>
-                <div className="flex items-start justify-between gap-2">
-                  <span className="rounded-md bg-primary-soft px-2.5 py-1 text-[11px] font-semibold text-primary">
+              <div className="flex flex-1 flex-col p-4 sm:p-5">
+                <div className="flex items-center gap-2">
+                  <span className="rounded bg-primary px-2.5 py-1 text-[11px] font-semibold text-white">
                     {product.audience}
                   </span>
-                  <span className="text-sm font-bold text-foreground">{product.price}</span>
                 </div>
 
-                <h3 className="mt-5 text-xl font-bold tracking-tight text-foreground">
+                <h3 className="mt-3 text-lg font-bold tracking-tight text-foreground">
                   {product.name}
                 </h3>
-                <p className="mt-2 text-xs text-muted leading-relaxed">
+
+                <p className="mt-1.5 text-sm text-body leading-snug">
                   {product.description}
                 </p>
 
-                <ul className="mt-6 space-y-2 border-t border-border/60 pt-4">
+                {/* Highlighted Price */}
+                <div className="mt-4 rounded-lg bg-primary px-4 py-4 text-center">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-white/90">
+                    Harga Resmi
+                  </p>
+                  <p className="mt-1.5 text-2xl sm:text-3xl font-extrabold leading-tight text-white whitespace-nowrap">
+                    {product.price}
+                  </p>
+                </div>
+
+                <ul className="mt-4 space-y-2">
                   {product.benefits.slice(0, 3).map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-2 text-xs text-body leading-relaxed">
-                      <span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />
+                    <li key={benefit} className="flex items-start gap-2.5 text-sm text-body leading-snug">
+                      <span className="mt-1 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary">
+                        <svg className="size-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
                       <span>{benefit}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-border/60">
+              <div className="border-t-2 border-primary bg-card px-4 py-3 sm:px-5">
                 <Link
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition hover:text-primary-hover"
+                  className="inline-flex items-center justify-center gap-1.5 w-full rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary-hover"
                   href={`/product/${product.slug}`}
                 >
                   <span>Lihat Detail Modul</span>
-                  <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                 </Link>

@@ -64,10 +64,10 @@ export function CardCarousel3D({
   const currentBaseScale = isMobile ? 0.9 : 1;
 
   return (
-    <div className={`relative flex flex-col w-full overflow-hidden select-none py-6 ${className}`}>
+    <div className={`relative flex flex-col w-full overflow-hidden select-none pt-0 pb-0 ${className}`}>
       {/* 3D Viewport */}
       <div
-        className="relative flex items-center justify-center w-full min-h-[360px] sm:min-h-[400px] overflow-hidden"
+        className="relative flex items-center justify-center w-full min-h-[310px] sm:min-h-[330px] overflow-hidden"
         style={{ perspective: `${perspective}px` }}
       >
         <AnimatePresence mode="popLayout">
@@ -114,7 +114,7 @@ export function CardCarousel3D({
       </div>
 
       {/* Controls Bar */}
-      <div className="flex items-center justify-between w-full max-w-4xl mx-auto px-4 mt-6 z-20">
+      <div className="flex items-center justify-between w-full max-w-4xl mx-auto px-4 mt-1.5 z-20">
         {/* Animated Pill Dots */}
         <div className="flex items-center gap-2">
           {items.map((_, idx) => (

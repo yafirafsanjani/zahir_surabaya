@@ -87,72 +87,16 @@ export function CompanyProfileHeroSection() {
 
           {/* Right Column: Clean Layered Dashboard Visual */}
           <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-            <div className="relative space-y-4">
-              {/* Main Card */}
-              <div className="rounded-2xl border border-border bg-card/95 p-6 shadow-xl shadow-primary/5 transition hover:border-primary/30 backdrop-blur-sm">
-                <div className="flex items-center justify-between border-b border-border/60 pb-3.5">
-                  <div className="flex items-center gap-2">
-                    <div className="flex size-7 items-center justify-center rounded-lg bg-primary text-xs font-bold text-white">
-                      ZS
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-foreground">Zahir Accounting 6</p>
-                      <p className="text-[10px] text-muted">Ringkasan Finansial Real-Time</p>
-                    </div>
-                  </div>
-                  <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400">
-                    ● Sistem Aktif
-                  </span>
-                </div>
-
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-xl border border-border bg-surface-raised p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted">Saldo Kas &amp; Bank</p>
-                    <p className="mt-1 text-2xl font-black text-foreground">Rp 184,5 jt</p>
-                    <p className="mt-1 text-[11px] font-semibold text-primary">↑ 18,4% bulan ini</p>
-                  </div>
-
-                  <div className="rounded-xl border border-border bg-surface-raised p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted">Laba Bersih</p>
-                    <p className="mt-1 text-2xl font-black text-primary">Rp 92,4 jt</p>
-                    <p className="mt-1 text-[11px] font-medium text-muted">Margin 25,1%</p>
-                  </div>
-                </div>
-
-                {/* Minimal Chart Bar */}
-                <div className="mt-4 rounded-xl border border-border bg-surface-raised p-4">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-foreground">Grafik Arus Kas &amp; Penjualan</span>
-                    <span className="text-[11px] text-muted">2026</span>
-                  </div>
-                  <div className="mt-4 flex h-20 items-end gap-2 px-1">
-                    {[40, 65, 50, 85, 70, 95, 80, 100].map((h, i) => (
-                      <div className="flex flex-1 flex-col items-center gap-1" key={i}>
-                        <div
-                          className="w-full rounded-t bg-primary transition-all duration-200 hover:bg-primary-hover"
-                          style={{ height: `${h}%`, opacity: 0.4 + i * 0.08 }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Sub Card */}
-              <div className="rounded-xl border border-border bg-card/95 p-4 shadow-lg sm:flex sm:items-center sm:justify-between backdrop-blur-sm">
-                <div className="flex items-center gap-3">
-                  <div className="flex size-9 items-center justify-center rounded-lg bg-primary-soft text-primary font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-foreground">Pendampingan Onsite &amp; Remote</p>
-                    <p className="text-[11px] text-muted">Setup Chart of Accounts &amp; Pelatihan Staf</p>
-                  </div>
-                </div>
-                <span className="mt-2 sm:mt-0 text-[11px] font-bold text-primary">
-                  Surabaya &amp; Jatim
-                </span>
-              </div>
+            <div className="relative">
+              <Image
+                alt="Zahir Accounting Dashboard"
+                className="rounded-2xl shadow-xl shadow-primary/5"
+                width={800}
+                height={500}
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                src="https://zahiraccounting.com/id/wp-content/uploads/2023/01/Desktop-Hero-Section.png"
+              />
             </div>
           </div>
         </div>

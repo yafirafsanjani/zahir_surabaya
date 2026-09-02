@@ -234,6 +234,23 @@ body {
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 .flow-border {
   background: linear-gradient(90deg, #0062ff, #38bdf8, #0062ff);
   background-size: 200% 100%;
