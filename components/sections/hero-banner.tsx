@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 type HeroBannerProps = {
@@ -9,6 +10,8 @@ type HeroBannerProps = {
   secondaryAction?: { href: string; label: string };
   children?: ReactNode;
   compact?: boolean;
+  backgroundImage?: string;
+  backgroundAlt?: string;
 };
 
 export function HeroBanner({
@@ -19,10 +22,26 @@ export function HeroBanner({
   secondaryAction,
   children,
   compact = false,
+  backgroundImage,
+  backgroundAlt = "Background",
 }: HeroBannerProps) {
   return (
-    <section className="relative overflow-hidden bg-background border-b border-border/80">
-      <div className="pointer-events-none absolute inset-0 bg-dot-minimal opacity-40" />
+    <section className={`relative overflow-hidden border-b border-border/80 ${backgroundImage ? "bg-transparent" : "bg-background"}`}>
+      {backgroundImage ? (
+        <div className="pointer-events-none absolute inset-0">
+          <Image
+            alt={backgroundAlt}
+            className="object-cover object-center"
+            fill
+            priority
+            sizes="100vw"
+            src={backgroundImage}
+          />
+          <div className="absolute inset-0 bg-white/88 backdrop-blur-[2px] dark:bg-[#090d16]/90" />
+        </div>
+      ) : (
+        <div className="pointer-events-none absolute inset-0 bg-dot-minimal opacity-40" />
+      )}
 
       <div className={`relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 ${compact ? "py-12 sm:py-16" : "py-16 sm:py-20"}`}>
         <div className="max-w-3xl">

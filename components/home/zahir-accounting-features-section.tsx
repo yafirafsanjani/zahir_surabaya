@@ -25,7 +25,7 @@ export function ZahirAccountingFeaturesSection() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <span className="badge-minimal">Pilar Keunggulan</span>
-            <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
               Modul Terstruktur Sesuai Tahapan Usaha
             </h2>
           </div>
@@ -38,11 +38,11 @@ export function ZahirAccountingFeaturesSection() {
           {features.map((feat, idx) => (
             <div className="clean-card flex flex-col justify-between p-6" key={feat.title}>
               <div>
-                <span className="text-xs font-mono font-bold text-primary">0{idx + 1}</span>
+                <span className="text-sm font-mono font-bold text-primary">0{idx + 1}</span>
                 <h3 className="mt-3 text-lg font-semibold text-foreground">{feat.title}</h3>
-                <p className="mt-2 text-xs sm:text-sm text-body leading-relaxed">{feat.description}</p>
+                <p className="mt-2 text-sm sm:text-base text-body leading-relaxed">{feat.description}</p>
               </div>
-              <div className="mt-6 pt-4 border-t border-border/60 text-xs text-muted font-medium">
+              <div className="mt-6 pt-4 border-t border-border/60 text-sm text-muted font-medium">
                 {feat.target}
               </div>
             </div>

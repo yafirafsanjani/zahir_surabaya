@@ -127,10 +127,10 @@ export function CardCarousel3D({
                 width: idx === currentIndex ? "24px" : "6px",
                 background:
                   idx === currentIndex
-                    ? "linear-gradient(90deg, #0062ff, #38bdf8)"
+                    ? "linear-gradient(90deg, #e33a33, #f47872)"
                     : "var(--border-strong)",
                 boxShadow:
-                  idx === currentIndex ? "0 0 10px rgba(0, 98, 255, 0.4)" : "none",
+                  idx === currentIndex ? "0 0 10px rgba(227, 58, 51, 0.4)" : "none",
               }}
             />
           ))}
@@ -139,7 +139,7 @@ export function CardCarousel3D({
         {/* Circular Arrow Buttons with Glow Hover */}
         <div className="flex items-center gap-2.5">
           <motion.button
-            whileHover={{ scale: 1.08, borderColor: "#0062ff" }}
+            whileHover={{ scale: 1.08, borderColor: "#e33a33" }}
             whileTap={{ scale: 0.95 }}
             onClick={prevSlide}
             aria-label="Slide sebelumnya"
@@ -151,7 +151,7 @@ export function CardCarousel3D({
           </motion.button>
 
           <motion.button
-            whileHover={{ scale: 1.08, borderColor: "#0062ff" }}
+            whileHover={{ scale: 1.08, borderColor: "#e33a33" }}
             whileTap={{ scale: 0.95 }}
             onClick={nextSlide}
             aria-label="Slide berikutnya"

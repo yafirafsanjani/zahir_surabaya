@@ -38,22 +38,22 @@ const testimonials = [
 
 export function CompanyTestimonialsSection() {
   return (
-    <section className="bg-background py-6 sm:py-10 border-b border-border/80">
+    <section className="bg-background py-16 sm:py-20 border-b border-border/80">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Play Store Style Rating Header */}
         <div className="max-w-2xl text-center mx-auto">
           <span className="badge-minimal">Ulasan Pengguna</span>
-          <h2 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
             Dipercaya Pelaku Usaha di Seluruh Sektor
           </h2>
-          <p className="mt-0.5 text-xs sm:text-sm text-body">
+          <p className="mt-2 text-sm sm:text-base text-body">
             Kisah nyata bagaimana Zahir membantu merapikan administrasi transaksi dan mempercepat keputusan bisnis.
           </p>
 
           {/* Play Store Rating Card */}
-          <div className="mt-3 inline-flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2 shadow-sm">
+          <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-2 shadow-xs">
             {/* Play logo image */}
-            <div className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-blue-600">
+            <div className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-primary">
               <Image
                 src="/images/Logo playstore.png"
                 alt="Logo Google Play"
@@ -64,7 +64,7 @@ export function CompanyTestimonialsSection() {
             </div>
 
             <div className="text-left">
-              <p className="text-[11px] font-semibold text-muted">Zahir Apps di Google Play</p>
+              <p className="text-sm font-semibold text-muted">Zahir Apps di Google Play</p>
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-0.5" aria-label="Rating 4.0 dari 5">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -75,7 +75,7 @@ export function CompanyTestimonialsSection() {
                 </div>
                 <span className="text-sm font-bold text-foreground">4.0</span>
               </div>
-              <p className="text-[10px] text-muted">204 ulasan · Zahir Internasional</p>
+              <p className="text-xs text-muted">204 ulasan · Zahir Internasional</p>
             </div>
           </div>
         </div>
@@ -86,11 +86,11 @@ export function CompanyTestimonialsSection() {
             {testimonials.map((item) => (
               <div
                 key={item.author}
-                className="clean-card flex flex-col justify-between p-5 sm:p-6 shadow-md bg-card"
+                className="clean-card flex flex-col justify-between p-5 sm:p-6 bg-card"
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-border/60 pb-2.5">
-                    <span className="text-[11px] font-semibold text-primary">{item.sector}</span>
+                    <span className="text-sm font-semibold text-primary">{item.sector}</span>
                     {/* Play Store styled stars */}
                     <div className="flex items-center gap-0.5" aria-label="5 bintang">
                       {Array.from({ length: 5 }).map((_, i) => (
@@ -100,7 +100,7 @@ export function CompanyTestimonialsSection() {
                       ))}
                     </div>
                   </div>
-                  <p className="mt-3 text-xs sm:text-sm text-foreground leading-relaxed italic">
+                  <p className="mt-3 text-sm sm:text-base text-foreground leading-relaxed italic">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
@@ -110,8 +110,8 @@ export function CompanyTestimonialsSection() {
                     {item.author.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-foreground">{item.author}</p>
-                    <p className="text-[11px] text-muted">{item.role}</p>
+                    <p className="text-sm font-bold text-foreground">{item.author}</p>
+                    <p className="text-xs text-muted">{item.role}</p>
                   </div>
                 </div>
               </div>

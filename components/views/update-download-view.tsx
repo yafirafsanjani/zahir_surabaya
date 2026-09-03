@@ -34,7 +34,7 @@ export function UpdateDownloadView() {
           <div className="grid gap-6 md:grid-cols-3">
             {cards.map((card) => (
               <div key={card.title} className="clean-card p-6">
-                <span className="rounded-md bg-primary-soft px-2 py-0.5 text-[11px] font-semibold text-primary">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">
                   {card.tag}
                 </span>
                 <h2 className="mt-3 text-base font-semibold text-foreground">{card.title}</h2>

@@ -7,16 +7,16 @@ const TEXT_ANIMATION_CSS = `
   0% {
     opacity: 0;
     transform: translateX(0.8em) scaleX(1.4) skewX(-20deg);
-    text-shadow: -8px 0px 4px rgba(0, 98, 255, 0.7);
+    text-shadow: -8px 0px 4px rgba(227, 58, 51, 0.7);
   }
   40% {
     opacity: 1;
     transform: translateX(-0.06em) scaleX(0.9) skewX(8deg);
-    text-shadow: 3px 0px 2px rgba(56, 189, 248, 0.4);
+    text-shadow: 3px 0px 2px rgba(244, 120, 114, 0.4);
   }
   70% {
     transform: translateX(0.02em) scaleX(1.05) skewX(-2deg);
-    text-shadow: -1px 0px 0px rgba(0, 98, 255, 0.2);
+    text-shadow: -1px 0px 0px rgba(227, 58, 51, 0.2);
   }
   85% {
     transform: translate(-1px, 1px) scaleX(1) skewX(0deg);

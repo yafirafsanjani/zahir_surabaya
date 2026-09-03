@@ -106,7 +106,7 @@ export const productCategories: ProductCategory[] = [
     hero:
       "Kelola keuangan bisnis Anda dengan mudah — pencatatan transaksi, persediaan, kas & bank, hingga laporan keuangan lengkap dalam satu aplikasi hybrid yang bekerja online maupun offline.",
     icon: "calculator",
-    color: "#0062ff",
+    color: "#e33a33",
     pricingIntro:
       "Pilih model pembayaran yang paling sesuai — berlangganan untuk fleksibilitas atau beli putus untuk kepemilikan penuh.",
     pricingIntroDescription:

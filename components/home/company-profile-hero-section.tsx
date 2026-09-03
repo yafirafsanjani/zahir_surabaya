@@ -22,12 +22,10 @@ export function CompanyProfileHeroSection() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           {/* Left Column: Reference Layout */}
           <div className="max-w-2xl">
-            {/* Pill Tag */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-card/95 px-3 py-1 text-xs shadow-2xs backdrop-blur-sm">
-              <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
-                RESMI JATIM
-              </span>
-              <span className="text-muted text-[11px] font-medium">
+            {/* Eyebrow */}
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="badge-minimal">Coverage Resmi</span>
+              <span className="text-sm font-medium text-body">
                 Konsultasi &amp; Demo Sistem{" "}
                 <span className="font-bold text-primary">100% Gratis</span>
               </span>
@@ -48,7 +46,7 @@ export function CompanyProfileHeroSection() {
             {/* Actions */}
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <Link
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md shadow-primary/25 transition-all duration-180 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/35 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-bold text-white transition-all duration-180 hover:bg-primary-hover hover:-translate-y-0.5 active:translate-y-0"
                 href="/product"
               >
                 <span>Lihat Solusi</span>
@@ -70,17 +68,17 @@ export function CompanyProfileHeroSection() {
             <div className="mt-12 flex flex-wrap items-center gap-8 border-t border-border/80 pt-6">
               <div>
                 <p className="text-2xl font-black text-foreground">100.000+</p>
-                <p className="text-xs font-medium text-muted">Pengguna Bisnis</p>
+                <p className="text-sm font-medium text-muted">Pengguna Bisnis</p>
               </div>
               <div className="h-8 w-px bg-border" />
               <div>
                 <p className="text-2xl font-black text-foreground">28+ Tahun</p>
-                <p className="text-xs font-medium text-muted">Inovasi Software</p>
+                <p className="text-sm font-medium text-muted">Inovasi Software</p>
               </div>
               <div className="h-8 w-px bg-border" />
               <div>
                 <p className="text-2xl font-black text-foreground">Official Hub</p>
-                <p className="text-xs font-medium text-muted">Surabaya &amp; Jatim</p>
+                <p className="text-sm font-medium text-muted">Surabaya &amp; Jatim</p>
               </div>
             </div>
           </div>
@@ -90,7 +88,7 @@ export function CompanyProfileHeroSection() {
             <div className="relative">
               <Image
                 alt="Zahir Accounting Dashboard"
-                className="rounded-2xl shadow-xl shadow-primary/5"
+                className="rounded-2xl border border-border shadow-sm"
                 width={800}
                 height={500}
                 priority

@@ -9,14 +9,14 @@ export function CompanyProfileCallToActionSection() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
               Siap Merapikan Pembukuan Bisnis Anda?
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-blue-100 leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-white/85 leading-relaxed">
               Konsultasikan kebutuhan software akuntansi bersama tim representasi resmi Zahir di Surabaya.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             <Link
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-primary transition hover:bg-blue-50 shadow-xs"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-primary transition hover:bg-red-50 shadow-xs"
               href="/contact-us"
             >
               <span>Jadwalkan Konsultasi</span>

@@ -10,12 +10,12 @@ type TeamMember = {
 };
 
 const team: TeamMember[] = [
-  { name: "Andi Pratama", role: "Konsultan Implementasi", gradient: "from-sky-500 to-blue-600", initial: "AP" },
-  { name: "Sari Dewi", role: "Finance Trainer", gradient: "from-emerald-500 to-teal-600", initial: "SD" },
-  { name: "Rizky Ramadhan", role: "Technical Support", gradient: "from-violet-500 to-purple-600", initial: "RR" },
-  { name: "Maya Lestari", role: "Account Manager", gradient: "from-rose-500 to-pink-600", initial: "ML" },
-  { name: "Budi Santoso", role: "Data Migration Specialist", gradient: "from-amber-500 to-orange-600", initial: "BS" },
-  { name: "Fitri Handayani", role: "Customer Success", gradient: "from-cyan-500 to-sky-600", initial: "FH" },
+  { name: "Andi Pratama", role: "Konsultan Implementasi", gradient: "from-red-600 to-red-800", initial: "AP" },
+  { name: "Sari Dewi", role: "Finance Trainer", gradient: "from-slate-500 to-slate-800", initial: "SD" },
+  { name: "Rizky Ramadhan", role: "Technical Support", gradient: "from-rose-500 to-red-700", initial: "RR" },
+  { name: "Maya Lestari", role: "Account Manager", gradient: "from-red-500 to-rose-700", initial: "ML" },
+  { name: "Budi Santoso", role: "Data Migration Specialist", gradient: "from-slate-600 to-slate-900", initial: "BS" },
+  { name: "Fitri Handayani", role: "Customer Success", gradient: "from-red-700 to-rose-900", initial: "FH" },
 ];
 
 export function CompanySurabayaServiceSection() {
@@ -51,10 +51,10 @@ export function CompanySurabayaServiceSection() {
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-2xl">
             <span className="badge-minimal">Tim Zahir Surabaya</span>
-            <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
               Tenaga Ahli Resmi di Balik Setiap Implementasi
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-body">
+            <p className="mt-3 text-sm sm:text-base text-body">
               Tim profesional Zahir Surabaya siap mendampingi konsultasi, setup, migrasi, hingga pelatihan staf Anda.
             </p>
           </div>
@@ -126,9 +126,9 @@ export function CompanySurabayaServiceSection() {
                 </div>
 
                 {/* Info */}
-                <div className="p-4">
-                  <h3 className="text-sm font-semibold text-foreground">{member.name}</h3>
-                  <p className="mt-0.5 text-xs text-muted">{member.role}</p>
+                <div className="p-5">
+                  <h3 className="text-base font-semibold text-foreground">{member.name}</h3>
+                  <p className="mt-0.5 text-sm text-muted">{member.role}</p>
                 </div>
               </div>
             </div>
@@ -155,7 +155,7 @@ export function CompanySurabayaServiceSection() {
                 width: idx === activeIndex ? "24px" : "6px",
                 background:
                   idx === activeIndex
-                    ? "linear-gradient(90deg, #0062ff, #38bdf8)"
+                    ? "linear-gradient(90deg, #e33a33, #f47872)"
                     : "var(--border-strong)",
               }}
             />

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 
 const highlights = [
   {
@@ -51,7 +51,56 @@ const logos = [
   "sinko.jpg",
   "sumber.jpg",
   "wahana.jpg",
+  "212-Mart-1.png",
+  "Abunawas-1.png",
+  "Adventurer-Indonesia-1.png",
+  "Alia-Go-1.png",
+  "AMCF-1.png",
+  "Arthatel-1.png",
+  "Bakrie-1.png",
+  "Bakso-Boedjangan-1.png",
+  "Bayas-Biofuels-1.png",
+  "Baznas-1.png",
+  "Bhinneka.com_-1.png",
+  "Brodo-1.png",
+  "Bukalapak-2.png",
+  "Bumi-Laksamana-1.png",
+  "Buttonscarves-1-1.png",
+  "D_Cost-1.png",
+  "Dago-Bakery-1.png",
+  "Dahana-1.png",
+  "Dapur-Cokelat-1.png",
+  "Delima-Jaya-1.png",
+  "IAS-1.png",
+  "Igasar-1.png",
+  "IKPP-1.png",
+  "Indah-Logistik-2.png",
+  "Indika-Energy-3.png",
+  "Kayana-2.png",
+  "KCIC-3.png",
+  "Kitabisa-2.png",
+  "Lazada-2.png",
+  "Lisaboy-2.png",
+  "Mola-2.png",
+  "MRI-2.png",
+  "Muamalat-2.png",
+  "Nusantara-Regas-2.png",
 ];
+
+// Split the client logos into three flowing rows. The source data is kept
+// untouched; duplication happens only at render time for a seamless loop.
+const marqueeRows = [
+  { logos: logos.slice(0, 16), anim: "animate-marquee-left-1" },
+  { logos: logos.slice(16, 32), anim: "animate-marquee-right-2" },
+  { logos: logos.slice(32, 48), anim: "animate-marquee-left-3" },
+];
+
+const edgeMask = {
+  maskImage:
+    "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+  WebkitMaskImage:
+    "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -65,6 +114,7 @@ const fadeUp = {
 export function CompanyOverviewSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section className="relative overflow-hidden bg-background py-20 sm:py-28 border-b border-border/80">
@@ -100,46 +150,72 @@ export function CompanyOverviewSection() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               variants={fadeUp}
-              className="group relative rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+              className="group relative rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/25"
             >
               <div className="flex size-10 items-center justify-center rounded-lg bg-primary-soft text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                 {item.icon}
               </div>
               <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
-              <p className="mt-2 text-xs sm:text-sm text-muted leading-relaxed">{item.description}</p>
+              <p className="mt-2 text-sm sm:text-base text-muted leading-relaxed">{item.description}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Company Logos Marquee */}
+        {/* Company Logos — animated client logo wall */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16"
+          className="mt-20"
         >
           <div className="text-center">
-            <span className="badge-minimal">Dipercaya oleh 100.000+ Bisnis</span>
-            <p className="mt-3 text-sm text-muted">
+            <h3 className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              Dipercaya oleh 100.000+ Bisnis
+            </h3>
+            <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted leading-relaxed">
               Ribuan perusahaan &amp; institusi di Indonesia telah menjalankan operasionalnya dengan Zahir Accounting.
             </p>
           </div>
 
-          <div className="relative mt-8 overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)" }}>
-            <div className="flex w-max animate-marquee items-center gap-12 pr-12">
-              {[...logos, ...logos].map((logo, idx) => (
+          {prefersReducedMotion ? (
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+              {logos.map((logo) => (
                 <Image
-                  key={idx}
+                  key={logo}
                   src={`/images/${logo}`}
                   alt="Logo perusahaan pengguna Zahir"
-                  width={240}
-                  height={72}
-                  sizes="240px"
-                  className="h-16 w-auto max-w-56 object-contain sm:h-20 sm:max-w-64"
+                  width={200}
+                  height={60}
+                  sizes="200px"
+                  className="h-12 w-auto max-w-40 object-contain opacity-80 sm:h-14 sm:max-w-44"
                 />
               ))}
             </div>
-          </div>
+          ) : (
+            <div className="mt-14 space-y-8 sm:space-y-10">
+              {marqueeRows.map((row) => (
+                <div
+                  key={row.anim}
+                  className="relative overflow-hidden"
+                  style={edgeMask}
+                >
+                  <div className={`marquee-track gap-10 pr-10 sm:gap-14 sm:pr-14 ${row.anim}`}>
+                    {[...row.logos, ...row.logos].map((logo, idx) => (
+                      <Image
+                        key={`${row.anim}-${idx}`}
+                        src={`/images/${logo}`}
+                        alt="Logo perusahaan pengguna Zahir"
+                        width={200}
+                        height={60}
+                        sizes="200px"
+                        className="h-12 w-auto max-w-40 object-contain opacity-80 hover:opacity-100 sm:h-14 sm:max-w-44"
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

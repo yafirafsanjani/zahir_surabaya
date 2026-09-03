@@ -50,7 +50,7 @@ export function InteractiveLocationMap() {
           className="flex flex-col justify-between p-6 sm:p-8"
         >
           <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-2.5 py-0.5 text-[11px] font-semibold text-primary">
+            <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-primary">
               <span className="size-1.5 rounded-full bg-primary" />
               {activeLocation.badge}
             </div>
