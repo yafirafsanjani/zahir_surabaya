@@ -10,7 +10,7 @@ export function BrandLogo() {
         width={420}
         height={84}
         priority
-        className="h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+        className="h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
       />
     </Link>
   );

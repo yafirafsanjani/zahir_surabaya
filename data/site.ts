@@ -1952,11 +1952,8 @@ export const publicNavigation: NavigationItem[] = [
       href: "/support-centre/" + support.slug,
     })),
   },
-  { label: "Tips & Trik", href: "/tips-trik" },
-  { label: "Promo & Event", href: "/promo-event" },
-  { label: "Contact Us", href: "/contact-us" },
   { label: "Update & Download", href: "/update-download" },
-  { label: "Partner", href: "/partner" },
+  { label: "Hubungi Kami", href: "/contact-us" },
 ];
 
 export function findCategory(slug: string) {

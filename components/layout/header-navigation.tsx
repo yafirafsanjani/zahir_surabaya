@@ -43,26 +43,26 @@ export function HeaderNavigation() {
       {/* Subtle flowing top line */}
       <div className="h-[2px] w-full flow-border" />
 
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <BrandLogo />
 
         {/* Desktop Nav */}
-        <nav aria-label="Navigasi utama" className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Navigasi utama" className="hidden items-center gap-1.5 lg:flex xl:gap-2.5">
           {publicNavigation.map((item) => {
             const active = isActiveRoute(item.href);
             return (
               <div className="group relative" key={item.href}>
                 <Link
-                  className={`inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-semibold leading-none transition-colors ${
                     active
-                      ? "bg-primary-soft text-primary font-semibold"
-                      : "text-body hover:bg-surface-raised hover:text-foreground"
+                      ? "bg-primary-soft text-primary"
+                      : "text-foreground hover:bg-surface-raised hover:text-primary"
                   }`}
                   href={item.href}
                 >
                   <span>{item.label}</span>
                   {item.children && (
-                    <svg className="size-3 text-muted transition-transform duration-150 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className={`size-3.5 transition-transform duration-150 group-hover:rotate-180 ${active ? "text-primary" : "text-muted-foreground"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                   )}
@@ -93,9 +93,9 @@ export function HeaderNavigation() {
         </nav>
 
         {/* Desktop Actions */}
-        <div className="hidden items-center gap-2.5 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
-          <Link className="btn-primary" href="/contact-us">
+          <Link className="btn-primary shrink-0" href="/contact-us">
             <span>Konsultasi</span>
             <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -104,12 +104,12 @@ export function HeaderNavigation() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Tutup menu" : "Buka menu"}
-            className="inline-flex size-8 items-center justify-center rounded-lg border border-border bg-card text-foreground"
+            className="inline-flex size-9 items-center justify-center rounded-lg border border-border bg-card text-foreground"
             onClick={() => setMobileMenuOpen((val) => !val)}
             type="button"
           >
@@ -130,7 +130,7 @@ export function HeaderNavigation() {
       {/* Mobile Menu Dropdown - rendered outside <header> to avoid backdrop-filter containing-block
           making position:fixed behave like absolute (which let page content bleed through / clip). */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[66px] z-[9999] overflow-y-auto overscroll-contain bg-background px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-2 md:hidden animate-subtle-in border-t border-border">
+        <div className="fixed inset-x-0 bottom-0 top-[74px] z-[9999] overflow-y-auto overscroll-contain bg-background px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-2 lg:hidden animate-subtle-in border-t border-border">
           <nav aria-label="Navigasi mobile" className="mx-auto max-w-md space-y-0.5">
             {publicNavigation.map((item) => {
               const active = isActiveRoute(item.href);

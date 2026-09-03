@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 
 const timeline = [
   {
@@ -45,91 +46,102 @@ const timeline = [
   },
 ];
 
+const cardMotion = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
 export function CompanyHistoryTimelineSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const reducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-background py-16 sm:py-20 border-b border-border/80 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-background py-14 sm:py-20 border-b border-border/80 overflow-hidden">
+      <div ref={ref} className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <span className="badge-minimal">Rekam Jejak</span>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="mt-4 max-w-xl text-3xl sm:text-4xl font-bold tracking-tight leading-snug text-foreground">
             Perjalanan Konsisten Mendukung Bisnis Indonesia
           </h2>
         </div>
 
         {/* Desktop: Horizontal Timeline */}
-        <div className="hidden lg:block mt-16 relative">
-          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-border" />
+        <div className="hidden lg:block mt-10 relative">
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="absolute left-0 right-0 top-1/2 h-[2px] bg-border-strong -translate-y-1/2"
+          />
 
           <div className="relative grid grid-cols-4 gap-6">
             {timeline.map((item, index) => {
               const isTop = index % 2 === 0;
-              const isHovered = hoveredIndex === index;
-
               return (
-                <div
+                <motion.div
                   key={item.year}
-                  className="relative flex flex-col items-center"
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  variants={cardMotion}
+                  initial={reducedMotion ? false : "hidden"}
+                  animate={isInView ? "visible" : "hidden"}
+                  transition={{ delay: index * 0.15 }}
+                  className="relative flex flex-col"
                 >
-                  {isTop ? (
-                    <>
-                      <div className="w-full flex justify-center mb-6">
-                        <TimelineCard item={item} isHovered={isHovered} />
+                  {/* Top half */}
+                  <div className="flex w-full flex-1 justify-center">
+                    {isTop ? (
+                      <div className="flex flex-col items-center justify-end">
+                        <TimelineCard item={item} />
+                        <TimelineConnector className="h-7" />
                       </div>
-                      <div className="flex flex-col items-center z-10">
-                        <ConnectorLine height="h-6" />
-                        <MilestoneDot isHovered={isHovered} />
-                        <ConnectorLine height="h-6" />
+                    ) : null}
+                  </div>
+
+                  {/* Milestone point on the central axis */}
+                  <div className="relative z-10 flex justify-center">
+                    <MilestoneDot />
+                  </div>
+
+                  {/* Bottom half */}
+                  <div className="flex w-full flex-1 justify-center">
+                    {!isTop ? (
+                      <div className="flex flex-col items-center justify-start">
+                        <TimelineConnector className="h-7" />
+                        <TimelineCard item={item} />
                       </div>
-                      <div className="mt-6" />
-                    </>
-                  ) : (
-                    <>
-                      <div className="mb-6" />
-                      <div className="flex flex-col items-center z-10">
-                        <ConnectorLine height="h-6" />
-                        <MilestoneDot isHovered={isHovered} />
-                        <ConnectorLine height="h-6" />
-                      </div>
-                      <div className="w-full flex justify-center mt-6">
-                        <TimelineCard item={item} isHovered={isHovered} />
-                      </div>
-                    </>
-                  )}
-                </div>
+                    ) : null}
+                  </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
 
         {/* Mobile/Tablet: Vertical Timeline */}
-        <div className="lg:hidden mt-10 relative">
-          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-border" />
+        <div className="lg:hidden mt-8 relative">
+          <div className="absolute left-[8px] top-0 bottom-0 w-[2px] bg-border-strong" />
 
           <div className="space-y-0">
             {timeline.map((item, index) => {
-              const isHovered = hoveredIndex === index;
               const isLast = index === timeline.length - 1;
-
               return (
-                <div
+                <motion.div
                   key={item.year}
-                  className="relative flex gap-4"
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  variants={cardMotion}
+                  initial={reducedMotion ? false : "hidden"}
+                  animate={isInView ? "visible" : "hidden"}
+                  transition={{ delay: index * 0.12 }}
+                  className="relative flex gap-5"
                 >
                   <div className="flex flex-col items-center z-10 shrink-0">
-                    <MilestoneDot isHovered={isHovered} />
-                    {!isLast && <ConnectorLine height="flex-1" vertical />}
+                    <MilestoneDot />
+                    {!isLast && <div className="w-[2px] flex-1 min-h-10 bg-border-strong" />}
                   </div>
 
-                  <div className="pt-0.5 pb-8 flex-1 min-w-0">
-                    <MobileTimelineCard item={item} isHovered={isHovered} />
+                  <div className="pt-1.5 pb-8 flex-1 min-w-0">
+                    <MobileTimelineCard item={item} />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -139,81 +151,31 @@ export function CompanyHistoryTimelineSection() {
   );
 }
 
-function MilestoneDot({ isHovered }: { isHovered: boolean }) {
+function MilestoneDot() {
   return (
     <div
-      className={`
-        relative flex items-center justify-center
-        size-4 rounded-full border-2 transition-all duration-200 ease-out
-        ${isHovered
-          ? "border-primary bg-primary scale-125"
-          : "border-border-strong bg-background"
-        }
-      `}
+      className="relative size-[18px] rounded-full border-2 border-border-strong transition-transform duration-200 hover:scale-110"
+      style={{ background: "var(--background)", boxShadow: "0 0 0 3px var(--background)" }}
     >
-      <div
-        className={`
-          absolute inset-0 rounded-full transition-opacity duration-200
-          ${isHovered ? "opacity-100" : "opacity-0"}
-        `}
-        style={{
-          boxShadow: "0 0 0 3px rgba(227, 58, 51, 0.15)",
-        }}
-      />
+      <div className="absolute inset-[4px] rounded-full bg-primary" />
     </div>
   );
 }
 
-function ConnectorLine({
-  height,
-  vertical,
-}: {
-  height: string;
-  vertical?: boolean;
-}) {
-  return (
-    <div
-      className={`
-        bg-border
-        ${vertical ? `w-px ${height}` : `h-px ${height} w-full`}
-      `}
-    />
-  );
+function TimelineConnector({ className }: { className?: string }) {
+  return <div className={`w-[2px] shrink-0 bg-border-strong ${className ?? ""}`} />;
 }
 
-function TimelineCard({
-  item,
-  isHovered,
-}: {
-  item: (typeof timeline)[number];
-  isHovered: boolean;
-}) {
+function TimelineCard({ item }: { item: (typeof timeline)[number] }) {
   return (
     <div
-      className={`
-        w-full max-w-[220px] p-4 rounded-xl border transition-all duration-200 ease-out cursor-default
-        ${isHovered
-          ? "border-primary/30 shadow-[0_4px_20px_-4px_rgba(0,98,255,0.1)] -translate-y-0.5"
-          : "border-border/60 shadow-none"
-        }
-      `}
-      style={{ background: "var(--card)" }}
+      className="group w-full max-w-[230px] rounded-xl border border-border/60 bg-card p-4 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-[0_6px_18px_-8px_rgba(15,23,42,0.12)]"
     >
       <div className="flex items-center gap-2.5">
-        <div
-          className={`
-            flex items-center justify-center size-9 rounded-lg transition-colors duration-200
-            ${isHovered ? "bg-primary text-on-primary" : "bg-primary-soft text-primary"}
-          `}
-        >
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-on-primary">
           {item.icon}
         </div>
-        <span
-          className={`
-            font-mono text-xl font-bold tracking-tight transition-colors duration-200
-            ${isHovered ? "text-primary" : "text-foreground"}
-          `}
-        >
+        <span className="font-mono text-xl font-bold tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary">
           {item.year}
         </span>
       </div>
@@ -228,39 +190,14 @@ function TimelineCard({
   );
 }
 
-function MobileTimelineCard({
-  item,
-  isHovered,
-}: {
-  item: (typeof timeline)[number];
-  isHovered: boolean;
-}) {
+function MobileTimelineCard({ item }: { item: (typeof timeline)[number] }) {
   return (
-    <div
-      className={`
-        p-4 rounded-xl border transition-all duration-200 ease-out cursor-default
-        ${isHovered
-          ? "border-primary/30 shadow-[0_4px_20px_-4px_rgba(0,98,255,0.1)]"
-          : "border-border/60 shadow-none"
-        }
-      `}
-      style={{ background: "var(--card)" }}
-    >
+    <div className="group rounded-xl border border-border/60 bg-card p-4 transition-all duration-200 ease-out hover:border-primary/30">
       <div className="flex items-center gap-3">
-        <div
-          className={`
-            flex items-center justify-center size-9 rounded-lg shrink-0 transition-colors duration-200
-            ${isHovered ? "bg-primary text-on-primary" : "bg-primary-soft text-primary"}
-          `}
-        >
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-on-primary">
           {item.icon}
         </div>
-        <span
-          className={`
-            font-mono text-lg font-bold tracking-tight transition-colors duration-200
-            ${isHovered ? "text-primary" : "text-foreground"}
-          `}
-        >
+        <span className="font-mono text-lg font-bold tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary">
           {item.year}
         </span>
       </div>
